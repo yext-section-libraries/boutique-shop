@@ -1,0 +1,1710 @@
+{
+  "root": {
+    "props": {
+      "title": {
+        "field": "name",
+        "constantValue": "Yext Boutique Shop Pages",
+        "constantValueEnabled": false
+      },
+      "version": 78,
+      "description": {
+        "field": "description",
+        "constantValue": "",
+        "constantValueEnabled": false
+      }
+    }
+  },
+  "zones": {},
+  "content": [
+    {
+      "type": "BoutiqueShopHeader",
+      "props": {
+        "id": "BoutiqueShopHeader-95e824b9-ba45-4899-963a-246f5198106a",
+        "cta": {
+          "show": true,
+          "items": [
+            {
+              "cta": {
+                "data": {
+                  "cta": {
+                    "field": "",
+                    "selectedType": "textAndLink",
+                    "constantValue": {
+                      "link": {
+                        "defaultValue": "#"
+                      },
+                      "label": {
+                        "defaultValue": "CTA Label"
+                      },
+                      "ctaType": "textAndLink",
+                      "linkType": "URL"
+                    },
+                    "constantValueEnabled": true
+                  },
+                  "customId": "",
+                  "ariaLabel": {
+                    "defaultValue": "CTA Label"
+                  },
+                  "actionType": "link",
+                  "buttonText": {
+                    "defaultValue": "Button"
+                  },
+                  "customClass": "",
+                  "openInNewTab": false,
+                  "dataAttributes": []
+                },
+                "styles": {
+                  "link": {
+                    "fontSize": "default",
+                    "fontStyle": "default",
+                    "fontFamily": "default",
+                    "fontWeight": "default",
+                    "includeCaret": "default",
+                    "letterSpacing": "default",
+                    "textTransform": "default"
+                  },
+                  "color": {
+                    "selectedColor": "palette-primary",
+                    "contrastingColor": "palette-primary-contrast"
+                  },
+                  "button": {
+                    "fontSize": "default",
+                    "fontStyle": "default",
+                    "fontFamily": "default",
+                    "fontWeight": "default",
+                    "borderRadius": "default",
+                    "letterSpacing": "default",
+                    "textTransform": "uppercase"
+                  },
+                  "variant": "primary"
+                }
+              }
+            }
+          ]
+        },
+        "section": {
+          "backgroundColor": {
+            "selectedColor": "palette-primary-light",
+            "contrastingColor": "black"
+          },
+          "visibleOnLivePage": true
+        },
+        "variant": "stackedNavBelow",
+        "logoImage": {
+          "url": {
+            "field": "",
+            "constantValue": {
+              "defaultValue": ""
+            },
+            "constantValueEnabled": true
+          },
+          "show": true,
+          "image": {
+            "field": "",
+            "constantValue": {
+              "url": "https://a.mktgcdn.com/p/OLT2KExDEKhKlCmIobyRRHN6MFUS77fVs5gIt_FTnBI/450x450.jpg",
+              "width": 450,
+              "height": 450
+            },
+            "constantValueEnabled": true
+          },
+          "styles": {
+            "borderRadius": "default"
+          },
+          "aspectRatio": 1,
+          "imageConstrain": "fixed"
+        },
+        "utilities": {
+          "show": true,
+          "items": [
+            {
+              "link": "#",
+              "label": "Item 1",
+              "linkType": "URL",
+              "iconImage": {
+                "image": {
+                  "field": "",
+                  "constantValue": {
+                    "url": "",
+                    "width": 0,
+                    "height": 0
+                  },
+                  "constantValueEnabled": true
+                },
+                "styles": {
+                  "borderRadius": "default"
+                },
+                "aspectRatio": 1,
+                "imageConstrain": "fixed"
+              },
+              "openInNewTab": false,
+              "normalizeLink": false
+            },
+            {
+              "link": "#",
+              "label": "Item 2",
+              "linkType": "URL",
+              "iconImage": {
+                "image": {
+                  "field": "",
+                  "constantValue": {
+                    "url": "",
+                    "width": 0,
+                    "height": 0
+                  },
+                  "constantValueEnabled": true
+                },
+                "styles": {
+                  "borderRadius": "default"
+                },
+                "aspectRatio": 1,
+                "imageConstrain": "fixed"
+              },
+              "openInNewTab": false,
+              "normalizeLink": false
+            },
+            {
+              "link": "#",
+              "label": "Item 3",
+              "linkType": "URL",
+              "iconImage": {
+                "image": {
+                  "field": "",
+                  "constantValue": {
+                    "url": "",
+                    "width": 0,
+                    "height": 0
+                  },
+                  "constantValueEnabled": true
+                },
+                "styles": {
+                  "borderRadius": "default"
+                },
+                "aspectRatio": 1,
+                "imageConstrain": "fixed"
+              },
+              "openInNewTab": false,
+              "normalizeLink": false
+            }
+          ]
+        },
+        "navigation": {
+          "show": true,
+          "links": [
+            {
+              "link": "#",
+              "label": "Locations",
+              "linkType": "URL",
+              "openInNewTab": false,
+              "normalizeLink": false
+            },
+            {
+              "link": "#",
+              "label": "Men",
+              "linkType": "URL",
+              "openInNewTab": false,
+              "normalizeLink": false
+            },
+            {
+              "link": "#",
+              "label": "Women",
+              "linkType": "URL",
+              "openInNewTab": false,
+              "normalizeLink": false
+            },
+            {
+              "link": "#",
+              "label": "Kids",
+              "linkType": "URL",
+              "openInNewTab": false,
+              "normalizeLink": false
+            },
+            {
+              "link": "#",
+              "label": "Sale",
+              "linkType": "URL",
+              "openInNewTab": false,
+              "normalizeLink": false
+            },
+            {
+              "link": "#",
+              "label": "Rewards",
+              "linkType": "URL",
+              "openInNewTab": false,
+              "normalizeLink": false
+            }
+          ],
+          "styles": {
+            "fontSize": "default",
+            "fontStyle": "default",
+            "fontFamily": "default",
+            "fontWeight": "default",
+            "includeCaret": "default",
+            "letterSpacing": "default",
+            "textTransform": "default"
+          }
+        }
+      }
+    },
+    {
+      "type": "MainContent",
+      "props": {
+        "id": "MainContent-default",
+        "content": [
+          {
+            "type": "BoutiqueShopBreadcrumbs",
+            "props": {
+              "id": "BoutiqueShopBreadcrumbs-d123debc-69c9-4cf5-a1be-3d6684b63dd0",
+              "section": {
+                "backgroundColor": {
+                  "selectedColor": "palette-primary-light",
+                  "contrastingColor": "black"
+                },
+                "visibleOnLivePage": true
+              },
+              "rootLabel": {
+                "text": {
+                  "field": "",
+                  "constantValue": {
+                    "defaultValue": "All Locations",
+                    "hasLocalizedValue": "true"
+                  },
+                  "constantValueEnabled": true
+                },
+                "styles": {
+                  "fontSize": "12px",
+                  "fontStyle": "normal",
+                  "fontFamily": "inherit",
+                  "fontWeight": "600",
+                  "textTransform": "uppercase"
+                },
+                "fontColor": {
+                  "selectedColor": "palette-quaternary",
+                  "contrastingColor": "palette-quaternary-contrast"
+                }
+              },
+              "includeCurrentLocation": true
+            }
+          },
+          {
+            "type": "BoutiqueShopHero",
+            "props": {
+              "id": "BoutiqueShopHero-671bed6d-81b9-4269-a4e0-a6bc289877db",
+              "name": {
+                "text": {
+                  "field": "name",
+                  "constantValue": {
+                    "defaultValue": ""
+                  },
+                  "constantValueEnabled": false
+                },
+                "styles": {
+                  "fontSize": "56px",
+                  "fontStyle": "normal",
+                  "fontFamily": "inherit",
+                  "fontWeight": "700",
+                  "textTransform": "none"
+                }
+              },
+              "section": {
+                "backgroundColor": {
+                  "selectedColor": "palette-tertiary-light",
+                  "contrastingColor": "black"
+                },
+                "visibleOnLivePage": true
+              },
+              "heroImage": {
+                "image": {
+                  "field": "",
+                  "constantValue": {
+                    "url": "https://a.mktgcdn.com/p/vQqhmnexQfZueJGyh5M_j5W4EcTkTyZlW93eIoqjjvQ/1900x1267.jpg",
+                    "width": 1900,
+                    "height": 1267
+                  },
+                  "constantValueEnabled": true
+                },
+                "styles": {
+                  "borderRadius": "default"
+                },
+                "aspectRatio": 1.5,
+                "imageConstrain": "filled"
+              },
+              "primaryCta": {
+                "data": {
+                  "cta": {
+                    "field": "",
+                    "constantValue": {
+                      "link": "#",
+                      "label": {
+                        "defaultValue": "Get Directions"
+                      },
+                      "ctaType": "getDirections"
+                    }
+                  },
+                  "actionType": "link",
+                  "openInNewTab": false
+                },
+                "styles": {
+                  "button": {
+                    "fontSize": "default",
+                    "fontStyle": "default",
+                    "fontFamily": "default",
+                    "fontWeight": "default",
+                    "borderRadius": "default",
+                    "letterSpacing": "default",
+                    "textTransform": "uppercase"
+                  },
+                  "variant": "primary"
+                }
+              },
+              "statusText": {
+                "hours": {
+                  "field": "hours",
+                  "constantValue": {},
+                  "constantValueEnabled": false
+                },
+                "hoursStyles": {
+                  "timeFormat": "12h",
+                  "showDayNames": true,
+                  "dayOfWeekFormat": "long",
+                  "showCurrentStatus": true
+                }
+              },
+              "description": {
+                "text": {
+                  "field": "",
+                  "constantValue": {
+                    "defaultValue": {
+                      "html": "<p dir=\"ltr\" style=\"font-size: 14.67px; font-weight: 400; line-height: 18.67px; margin: 0; padding: 3px 2px 3px 2px; position: relative;\"><span>[[name]] is a clothing retail location offering curated contemporary apparel, premium denim, and seasonal essentials for men, women, and children with personalized styling services and designer-inspired fashion for Chicago.</span></p>",
+                      "json": "{\"root\":{\"children\":[{\"children\":[{\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"[[name]] is a clothing retail location offering curated contemporary apparel, premium denim, and seasonal essentials for men, women, and children with personalized styling services and designer-inspired fashion for Chicago.\",\"type\":\"text\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"paragraph\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"root\",\"version\":1}}"
+                    },
+                    "hasLocalizedValue": "true"
+                  },
+                  "constantValueEnabled": true
+                }
+              },
+              "secondaryCta": {
+                "data": {
+                  "cta": {
+                    "field": "",
+                    "constantValue": {
+                      "link": "#",
+                      "label": {
+                        "defaultValue": "Book Personal Stylist"
+                      },
+                      "ctaType": "textAndLink"
+                    }
+                  },
+                  "actionType": "link",
+                  "openInNewTab": false
+                },
+                "styles": {
+                  "variant": "secondary"
+                }
+              },
+              "reviewStarsColor": {
+                "selectedColor": "palette-primary",
+                "contrastingColor": "palette-primary-contrast"
+              }
+            }
+          },
+          {
+            "type": "BoutiqueShopStoreDetails",
+            "props": {
+              "id": "BoutiqueShopStoreDetails-07117889-9eee-4321-8553-f9be82a2bfd0",
+              "hours": {
+                "field": "hours",
+                "constantValue": {},
+                "constantValueEnabled": false
+              },
+              "address": {
+                "address": {
+                  "field": "address",
+                  "constantValue": {
+                    "city": "",
+                    "line1": "",
+                    "region": "",
+                    "postalCode": "",
+                    "countryCode": ""
+                  },
+                  "constantValueEnabled": false
+                },
+                "showRegion": true,
+                "showCountry": false
+              },
+              "heading": {
+                "text": {
+                  "field": "",
+                  "constantValue": {
+                    "defaultValue": "[[name]] Store Details",
+                    "hasLocalizedValue": "true"
+                  },
+                  "constantValueEnabled": true
+                },
+                "styles": {
+                  "fontSize": "25px",
+                  "fontStyle": "normal",
+                  "fontFamily": "inherit",
+                  "fontWeight": "500",
+                  "textTransform": "none"
+                }
+              },
+              "section": {
+                "backgroundColor": {
+                  "selectedColor": "palette-quaternary-light",
+                  "contrastingColor": "black"
+                },
+                "visibleOnLivePage": true
+              },
+              "bodyText": {
+                "styles": {
+                  "fontSize": "default",
+                  "fontStyle": "default",
+                  "fontFamily": "default",
+                  "fontWeight": "default",
+                  "textTransform": "default"
+                }
+              },
+              "services": {
+                "text": {
+                  "field": "",
+                  "constantValue": [
+                    "Complimentary Personal Styling",
+                    "Digital Fitting Room Requests",
+                    "In-Store WiFi",
+                    "Mobile Checkout",
+                    "Gift Wrapping Station"
+                  ],
+                  "constantValueEnabled": true
+                }
+              },
+              "mainPhone": {
+                "items": [
+                  {
+                    "label": "",
+                    "number": {
+                      "field": "mainPhone",
+                      "constantValue": "",
+                      "constantValueEnabled": false
+                    }
+                  }
+                ],
+                "phoneFormat": "domestic",
+                "includeHyperlink": true
+              },
+              "websiteUrl": {
+                "data": {
+                  "cta": {
+                    "field": "",
+                    "constantValue": {
+                      "link": "#",
+                      "label": {
+                        "defaultValue": "Visit Website"
+                      },
+                      "ctaType": "textAndLink"
+                    }
+                  },
+                  "actionType": "link",
+                  "openInNewTab": false
+                },
+                "styles": {
+                  "button": {
+                    "fontSize": "default",
+                    "fontStyle": "default",
+                    "fontFamily": "default",
+                    "fontWeight": "default",
+                    "borderRadius": "default",
+                    "letterSpacing": "default",
+                    "textTransform": "uppercase"
+                  },
+                  "variant": "primary"
+                }
+              },
+              "hoursStyles": {
+                "alignment": "items-start",
+                "startOfWeek": "monday",
+                "collapseDays": false,
+                "showAdditionalHoursText": false
+              },
+              "addressLabel": {
+                "text": {
+                  "field": "",
+                  "constantValue": {
+                    "defaultValue": "Address",
+                    "hasLocalizedValue": "true"
+                  },
+                  "constantValueEnabled": true
+                },
+                "styles": {
+                  "fontSize": "16px",
+                  "fontStyle": "normal",
+                  "fontFamily": "inherit",
+                  "fontWeight": "700",
+                  "textTransform": "none"
+                }
+              },
+              "directionsCta": {
+                "data": {
+                  "cta": {
+                    "field": "",
+                    "constantValue": {
+                      "link": "#",
+                      "label": {
+                        "defaultValue": "Get Directions"
+                      },
+                      "ctaType": "getDirections"
+                    }
+                  },
+                  "actionType": "link",
+                  "openInNewTab": false
+                },
+                "styles": {
+                  "variant": "secondary"
+                }
+              },
+              "mainPhoneLabel": {
+                "text": {
+                  "field": "",
+                  "constantValue": {
+                    "defaultValue": "Main Phone",
+                    "hasLocalizedValue": "true"
+                  },
+                  "constantValueEnabled": true
+                },
+                "styles": {
+                  "fontSize": "16px",
+                  "fontStyle": "normal",
+                  "fontFamily": "inherit",
+                  "fontWeight": "700",
+                  "textTransform": "none"
+                }
+              },
+              "servicesHeading": {
+                "text": {
+                  "field": "",
+                  "constantValue": {
+                    "defaultValue": "Services",
+                    "hasLocalizedValue": "true"
+                  },
+                  "constantValueEnabled": true
+                }
+              },
+              "storeHoursHeading": {
+                "text": {
+                  "field": "",
+                  "constantValue": {
+                    "defaultValue": "Store Hours",
+                    "hasLocalizedValue": "true"
+                  },
+                  "constantValueEnabled": true
+                }
+              },
+              "columnHeadingStyles": {
+                "styles": {
+                  "fontSize": "26px",
+                  "fontStyle": "normal",
+                  "fontFamily": "inherit",
+                  "fontWeight": "700",
+                  "textTransform": "none"
+                }
+              },
+              "locationInformationHeading": {
+                "text": {
+                  "field": "",
+                  "constantValue": {
+                    "defaultValue": "Location Information",
+                    "hasLocalizedValue": "true"
+                  },
+                  "constantValueEnabled": true
+                }
+              }
+            }
+          },
+          {
+            "type": "BoutiqueShopFeaturedExperiences",
+            "props": {
+              "id": "BoutiqueShopFeaturedExperiences-a6c5e96b-a786-41c2-8274-9a2a1397e9cf",
+              "heading": {
+                "text": {
+                  "field": "",
+                  "constantValue": {
+                    "defaultValue": "Featured Shopping Experiences",
+                    "hasLocalizedValue": "true"
+                  },
+                  "constantValueEnabled": true
+                },
+                "styles": {
+                  "fontSize": "25px",
+                  "fontStyle": "normal",
+                  "fontFamily": "inherit",
+                  "fontWeight": "500",
+                  "textTransform": "none"
+                }
+              },
+              "section": {
+                "backgroundColor": {
+                  "selectedColor": "palette-quaternary-light",
+                  "contrastingColor": "black"
+                },
+                "visibleOnLivePage": true
+              },
+              "experienceCards": {
+                "data": {
+                  "field": "",
+                  "mappings": {
+                    "cta": {
+                      "field": "",
+                      "constantValueEnabled": false
+                    },
+                    "image": {
+                      "field": "",
+                      "constantValueEnabled": false
+                    },
+                    "title": {
+                      "field": "",
+                      "constantValueEnabled": false
+                    },
+                    "description": {
+                      "field": "",
+                      "constantValueEnabled": false
+                    }
+                  },
+                  "constantValue": [
+                    {
+                      "cta": {
+                        "field": "",
+                        "constantValue": {
+                          "link": {
+                            "defaultValue": "#",
+                            "hasLocalizedValue": "true"
+                          },
+                          "label": {
+                            "defaultValue": "Book a Free Session",
+                            "hasLocalizedValue": "true"
+                          },
+                          "ctaType": "textAndLink",
+                          "linkType": "URL"
+                        },
+                        "constantValueEnabled": true
+                      },
+                      "image": {
+                        "field": "",
+                        "constantValue": {
+                          "url": "https://a.mktgcdn.com/p/UHR6VTEvcR-yDMqPSOS7LyK87Qt56EOrmfNbhLQxI08/1267x1900.jpg",
+                          "width": 1267,
+                          "height": 1900
+                        },
+                        "constantValueEnabled": true
+                      },
+                      "title": {
+                        "field": "",
+                        "constantValue": {
+                          "defaultValue": "Personal Styling",
+                          "hasLocalizedValue": "true"
+                        },
+                        "constantValueEnabled": true
+                      },
+                      "description": {
+                        "field": "",
+                        "constantValue": {
+                          "defaultValue": {
+                            "html": "<p dir=\"ltr\" style=\"font-size: 14.67px; font-weight: 400; line-height: 18.67px; margin: 0; padding: 3px 2px 3px 2px; position: relative;\"><span>Work one-on-one with a style expert to refresh your wardrobe or find the perfect outfit for a special event.</span></p>",
+                            "json": "{\"root\":{\"children\":[{\"children\":[{\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"Work one-on-one with a style expert to refresh your wardrobe or find the perfect outfit for a special event.\",\"type\":\"text\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"paragraph\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"root\",\"version\":1}}"
+                          },
+                          "hasLocalizedValue": "true"
+                        },
+                        "constantValueEnabled": true
+                      }
+                    },
+                    {
+                      "cta": {
+                        "field": "",
+                        "constantValue": {
+                          "link": {
+                            "defaultValue": "#",
+                            "hasLocalizedValue": "true"
+                          },
+                          "label": {
+                            "defaultValue": "Browse Denim Collection",
+                            "hasLocalizedValue": "true"
+                          },
+                          "ctaType": "textAndLink",
+                          "linkType": "URL"
+                        },
+                        "constantValueEnabled": true
+                      },
+                      "image": {
+                        "field": "",
+                        "constantValue": {
+                          "url": "https://a.mktgcdn.com/p/fbSbItkZpsHpkc8qHH7GxvQkWzxsfm6mGc0k4Lmfl-A/1267x1900.jpg",
+                          "width": 1267,
+                          "height": 1900
+                        },
+                        "constantValueEnabled": true
+                      },
+                      "title": {
+                        "field": "",
+                        "constantValue": {
+                          "defaultValue": "Premium Denim Lab",
+                          "hasLocalizedValue": "true"
+                        },
+                        "constantValueEnabled": true
+                      },
+                      "description": {
+                        "field": "",
+                        "constantValue": {
+                          "defaultValue": {
+                            "html": "<p dir=\"ltr\" style=\"font-size: 14.67px; font-weight: 400; line-height: 18.67px; margin: 0; padding: 3px 2px 3px 2px; position: relative;\"><span>Find your perfect fit with specialized denim consultants and on-site tailoring for hem adjustments.</span></p>",
+                            "json": "{\"root\":{\"children\":[{\"children\":[{\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"Find your perfect fit with specialized denim consultants and on-site tailoring for hem adjustments.\",\"type\":\"text\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"paragraph\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"root\",\"version\":1}}"
+                          },
+                          "hasLocalizedValue": "true"
+                        },
+                        "constantValueEnabled": true
+                      }
+                    },
+                    {
+                      "cta": {
+                        "field": "",
+                        "constantValue": {
+                          "link": {
+                            "defaultValue": "#",
+                            "hasLocalizedValue": "true"
+                          },
+                          "label": {
+                            "defaultValue": "Start Shopping",
+                            "hasLocalizedValue": "true"
+                          },
+                          "ctaType": "textAndLink",
+                          "linkType": "URL"
+                        },
+                        "constantValueEnabled": true
+                      },
+                      "image": {
+                        "field": "",
+                        "constantValue": {
+                          "url": "https://a.mktgcdn.com/p/Qdlacb36DqN5Lt3q6V9jw-qSMmbPyl_AeMEI_CyDkHc/1267x1900.jpg",
+                          "width": 1267,
+                          "height": 1900
+                        },
+                        "constantValueEnabled": true
+                      },
+                      "title": {
+                        "field": "",
+                        "constantValue": {
+                          "defaultValue": "Buy Online, Pick Up In-Store",
+                          "hasLocalizedValue": "true"
+                        },
+                        "constantValueEnabled": true
+                      },
+                      "description": {
+                        "field": "",
+                        "constantValue": {
+                          "defaultValue": {
+                            "html": "<p dir=\"ltr\" style=\"font-size: 14.67px; font-weight: 400; line-height: 18.67px; margin: 0; padding: 3px 2px 3px 2px; position: relative;\"><span>Skip the shipping and get your items today. Simply select [[name]] at checkout.</span></p>",
+                            "json": "{\"root\":{\"children\":[{\"children\":[{\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"Skip the shipping and get your items today. Simply select [[name]] at checkout.\",\"type\":\"text\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"paragraph\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"root\",\"version\":1}}"
+                          },
+                          "hasLocalizedValue": "true"
+                        },
+                        "constantValueEnabled": true
+                      }
+                    },
+                    {
+                      "cta": {
+                        "field": "",
+                        "constantValue": {
+                          "link": {
+                            "defaultValue": "#",
+                            "hasLocalizedValue": "true"
+                          },
+                          "label": {
+                            "defaultValue": "View Tailoring Menu",
+                            "hasLocalizedValue": "true"
+                          },
+                          "ctaType": "textAndLink",
+                          "linkType": "URL"
+                        },
+                        "constantValueEnabled": true
+                      },
+                      "image": {
+                        "field": "",
+                        "constantValue": {
+                          "url": "https://a.mktgcdn.com/p/UHR6VTEvcR-yDMqPSOS7LyK87Qt56EOrmfNbhLQxI08/1267x1900.jpg",
+                          "width": 1267,
+                          "height": 1900
+                        },
+                        "constantValueEnabled": true
+                      },
+                      "title": {
+                        "field": "",
+                        "constantValue": {
+                          "defaultValue": "Alterations & Tailoring",
+                          "hasLocalizedValue": "true"
+                        },
+                        "constantValueEnabled": true
+                      },
+                      "description": {
+                        "field": "",
+                        "constantValue": {
+                          "defaultValue": {
+                            "html": "<p dir=\"ltr\" style=\"font-size: 14.67px; font-weight: 400; line-height: 18.67px; margin: 0; padding: 3px 2px 3px 2px; position: relative;\"><span>Ensure every piece fits perfectly with our on-site tailor providing professional adjustments.</span></p>",
+                            "json": "{\"root\":{\"children\":[{\"children\":[{\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"Ensure every piece fits perfectly with our on-site tailor providing professional adjustments.\",\"type\":\"text\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"paragraph\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"root\",\"version\":1}}"
+                          },
+                          "hasLocalizedValue": "true"
+                        },
+                        "constantValueEnabled": true
+                      }
+                    }
+                  ],
+                  "constantValueEnabled": true
+                },
+                "styles": {
+                  "cta": {
+                    "button": {
+                      "fontSize": "default",
+                      "fontStyle": "default",
+                      "fontFamily": "default",
+                      "fontWeight": "default",
+                      "borderRadius": "default",
+                      "letterSpacing": "default",
+                      "textTransform": "uppercase"
+                    },
+                    "variant": "primary"
+                  },
+                  "image": {
+                    "styles": {
+                      "borderRadius": "default"
+                    },
+                    "aspectRatio": 1.3,
+                    "imageConstrain": "filled"
+                  },
+                  "title": {
+                    "styles": {
+                      "fontSize": "24px",
+                      "fontStyle": "normal",
+                      "fontFamily": "inherit",
+                      "fontWeight": "700",
+                      "textTransform": "none"
+                    }
+                  },
+                  "description": {
+                    "styles": {
+                      "fontSize": "inherit",
+                      "fontStyle": "normal",
+                      "fontFamily": "inherit",
+                      "fontWeight": "inherit",
+                      "textTransform": "none"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "BoutiqueShopFeaturedPromo",
+            "props": {
+              "id": "BoutiqueShopFeaturedPromo-bb3eb616-dff8-422b-8667-2e4aa9d30fac",
+              "cta": {
+                "data": {
+                  "cta": {
+                    "field": "",
+                    "constantValue": {
+                      "link": "#",
+                      "label": {
+                        "defaultValue": "Shop Now",
+                        "hasLocalizedValue": "true"
+                      },
+                      "linkType": "URL"
+                    },
+                    "constantValueEnabled": true
+                  },
+                  "actionType": "link",
+                  "openInNewTab": false
+                },
+                "styles": {
+                  "button": {
+                    "fontSize": "default",
+                    "fontStyle": "default",
+                    "fontFamily": "default",
+                    "fontWeight": "default",
+                    "borderRadius": "default",
+                    "letterSpacing": "default",
+                    "textTransform": "uppercase"
+                  },
+                  "variant": "primary"
+                }
+              },
+              "body": {
+                "text": {
+                  "field": "",
+                  "constantValue": {
+                    "defaultValue": {
+                      "html": "<p dir=\"ltr\" style=\"font-size: 14.67px; font-weight: 400; line-height: 18.67px; margin: 0; padding: 3px 2px 3px 2px; position: relative;\"><span>Explore our latest arrivals featuring sustainable fabrics, modern silhouettes, and timeless essentials.</span></p>",
+                      "json": "{\"root\":{\"children\":[{\"children\":[{\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"Explore our latest arrivals featuring sustainable fabrics, modern silhouettes, and timeless essentials.\",\"type\":\"text\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"paragraph\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"root\",\"version\":1}}"
+                    },
+                    "hasLocalizedValue": "true"
+                  },
+                  "constantValueEnabled": true
+                }
+              },
+              "heading": {
+                "text": {
+                  "field": "",
+                  "constantValue": {
+                    "defaultValue": "Shop our Seasonal Collection"
+                  },
+                  "constantValueEnabled": true
+                },
+                "styles": {
+                  "fontSize": "24px",
+                  "fontStyle": "normal",
+                  "fontFamily": "inherit",
+                  "fontWeight": "400",
+                  "textTransform": "none"
+                }
+              },
+              "section": {
+                "backgroundColor": {
+                  "selectedColor": "palette-quaternary-light",
+                  "contrastingColor": "black"
+                },
+                "visibleOnLivePage": true
+              },
+              "promoImage": {
+                "image": {
+                  "field": "",
+                  "constantValue": {
+                    "url": "https://a.mktgcdn.com/p/Qdlacb36DqN5Lt3q6V9jw-qSMmbPyl_AeMEI_CyDkHc/1267x1900.jpg",
+                    "width": 1267,
+                    "height": 1900
+                  },
+                  "constantValueEnabled": true
+                },
+                "styles": {
+                  "borderRadius": "default"
+                },
+                "aspectRatio": 0.67,
+                "imageConstrain": "filled"
+              }
+            }
+          },
+          {
+            "type": "BoutiqueShopFaq",
+            "props": {
+              "id": "BoutiqueShopFaq-02f66bc4-6055-4b42-ac34-b6f9382e23ba",
+              "faqs": {
+                "data": {
+                  "field": "",
+                  "mappings": {
+                    "answer": {
+                      "field": "",
+                      "constantValueEnabled": false
+                    },
+                    "question": {
+                      "field": "",
+                      "constantValueEnabled": false
+                    }
+                  },
+                  "constantValue": [
+                    {
+                      "answer": {
+                        "field": "",
+                        "constantValue": {
+                          "defaultValue": {
+                            "html": "<p dir=\"ltr\" style=\"font-size: 14.67px; font-weight: 400; line-height: 18.67px; margin: 0; padding: 3px 2px 3px 2px; position: relative;\"><span>Walk-ins are always welcome, but we recommend booking an appointment for one-on-one styling support during evenings and weekends.</span></p>",
+                            "json": "{\"root\":{\"children\":[{\"children\":[{\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"Walk-ins are always welcome, but we recommend booking an appointment for one-on-one styling support during evenings and weekends.\",\"type\":\"text\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"paragraph\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"root\",\"version\":1}}"
+                          },
+                          "hasLocalizedValue": "true"
+                        },
+                        "constantValueEnabled": true
+                      },
+                      "question": {
+                        "field": "",
+                        "constantValue": {
+                          "defaultValue": "Do I need an appointment for a stylist?",
+                          "hasLocalizedValue": "true"
+                        },
+                        "constantValueEnabled": true
+                      }
+                    },
+                    {
+                      "answer": {
+                        "field": "",
+                        "constantValue": {
+                          "defaultValue": {
+                            "html": "<p dir=\"ltr\" style=\"font-size: 14.67px; font-weight: 400; line-height: 18.67px; margin: 0; padding: 3px 2px 3px 2px; position: relative;\"><span>Validated parking is available at the neighboring garage on Halsted, and limited street parking is typically available in the mornings.</span></p>",
+                            "json": "{\"root\":{\"children\":[{\"children\":[{\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"Validated parking is available at the neighboring garage on Halsted, and limited street parking is typically available in the mornings.\",\"type\":\"text\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"paragraph\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"root\",\"version\":1}}"
+                          },
+                          "hasLocalizedValue": "true"
+                        },
+                        "constantValueEnabled": true
+                      },
+                      "question": {
+                        "field": "",
+                        "constantValue": {
+                          "defaultValue": "Where is the best place to park?",
+                          "hasLocalizedValue": "true"
+                        },
+                        "constantValueEnabled": true
+                      }
+                    },
+                    {
+                      "answer": {
+                        "field": "",
+                        "constantValue": {
+                          "defaultValue": {
+                            "html": "<p dir=\"ltr\" style=\"font-size: 14.67px; font-weight: 400; line-height: 18.67px; margin: 0; padding: 3px 2px 3px 2px; position: relative;\"><span>Yes. Bring your order confirmation and the unworn item to the store, and our team can process the return according to our service guidelines.</span></p>",
+                            "json": "{\"root\":{\"children\":[{\"children\":[{\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"Yes. Bring your order confirmation and the unworn item to the store, and our team can process the return according to our service guidelines.\",\"type\":\"text\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"paragraph\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"root\",\"version\":1}}"
+                          },
+                          "hasLocalizedValue": "true"
+                        },
+                        "constantValueEnabled": true
+                      },
+                      "question": {
+                        "field": "",
+                        "constantValue": {
+                          "defaultValue": "Can I return items I bought online at the store?",
+                          "hasLocalizedValue": "true"
+                        },
+                        "constantValueEnabled": true
+                      }
+                    },
+                    {
+                      "answer": {
+                        "field": "",
+                        "constantValue": {
+                          "defaultValue": {
+                            "html": "<p dir=\"ltr\" style=\"font-size: 14.67px; font-weight: 400; line-height: 18.67px; margin: 0; padding: 3px 2px 3px 2px; position: relative;\"><span>Our tailoring team can help with many garments purchased outside the store as long as they meet our service guidelines.</span></p>",
+                            "json": "{\"root\":{\"children\":[{\"children\":[{\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"Our tailoring team can help with many garments purchased outside the store as long as they meet our service guidelines.\",\"type\":\"text\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"paragraph\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"root\",\"version\":1}}"
+                          },
+                          "hasLocalizedValue": "true"
+                        },
+                        "constantValueEnabled": true
+                      },
+                      "question": {
+                        "field": "",
+                        "constantValue": {
+                          "defaultValue": "Is tailoring available for clothes bought elsewhere?",
+                          "hasLocalizedValue": "true"
+                        },
+                        "constantValueEnabled": true
+                      }
+                    }
+                  ],
+                  "constantValueEnabled": true
+                },
+                "styles": {
+                  "answer": {
+                    "styles": {
+                      "fontSize": "inherit",
+                      "fontStyle": "normal",
+                      "fontFamily": "inherit",
+                      "fontWeight": "inherit",
+                      "textTransform": "none"
+                    }
+                  },
+                  "question": {
+                    "styles": {
+                      "fontSize": "20px",
+                      "fontStyle": "normal",
+                      "fontFamily": "inherit",
+                      "fontWeight": "600",
+                      "textTransform": "none"
+                    }
+                  }
+                }
+              },
+              "heading": {
+                "text": {
+                  "field": "",
+                  "constantValue": {
+                    "defaultValue": "Frequently Asked Questions",
+                    "hasLocalizedValue": "true"
+                  },
+                  "constantValueEnabled": true
+                },
+                "styles": {
+                  "fontSize": "25px",
+                  "fontStyle": "normal",
+                  "fontFamily": "inherit",
+                  "fontWeight": "500",
+                  "textTransform": "none"
+                }
+              },
+              "section": {
+                "backgroundColor": {
+                  "selectedColor": "palette-quaternary-light",
+                  "contrastingColor": "black"
+                },
+                "visibleOnLivePage": true
+              }
+            }
+          },
+          {
+            "type": "BoutiqueShopAbout",
+            "props": {
+              "id": "BoutiqueShopAbout-ef599982-c5f8-438e-9b9f-56f8e5162334",
+              "body": {
+                "text": {
+                  "field": "",
+                  "constantValue": {
+                    "defaultValue": {
+                      "html": "<p dir=\"ltr\" style=\"font-size: 14.67px; font-weight: 400; line-height: 18.67px; margin: 0; padding: 3px 2px 3px 2px; position: relative;\"><span>[[name]] is located in 1800 N Halsted St and serves Chicago&#39;s diverse neighborhoods. Our flagship offers an elevated shopping experience, combining high-tech convenience with personalized boutique service. The store features modern, spacious fitting rooms with adjustable lighting, a lounge area for companions, and seamless mobile checkout to save you time.</span></p>",
+                      "json": "{\"root\":{\"children\":[{\"children\":[{\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"[[name]] is located in 1800 N Halsted St and serves Chicago's diverse neighborhoods. Our flagship offers an elevated shopping experience, combining high-tech convenience with personalized boutique service. The store features modern, spacious fitting rooms with adjustable lighting, a lounge area for companions, and seamless mobile checkout to save you time.\",\"type\":\"text\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"paragraph\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"root\",\"version\":1}}"
+                    },
+                    "hasLocalizedValue": "true"
+                  },
+                  "constantValueEnabled": true
+                },
+                "fontColor": {
+                  "selectedColor": "palette-quaternary",
+                  "contrastingColor": "palette-quaternary-contrast"
+                }
+              },
+              "heading": {
+                "text": {
+                  "field": "",
+                  "constantValue": {
+                    "defaultValue": "About This Store",
+                    "hasLocalizedValue": "true"
+                  },
+                  "constantValueEnabled": true
+                },
+                "styles": {
+                  "fontSize": "25px",
+                  "fontStyle": "normal",
+                  "fontFamily": "inherit",
+                  "fontWeight": "500",
+                  "textTransform": "none"
+                }
+              },
+              "section": {
+                "backgroundColor": {
+                  "selectedColor": "palette-primary-light",
+                  "contrastingColor": "black"
+                },
+                "visibleOnLivePage": true
+              },
+              "aboutImage": {
+                "image": {
+                  "field": "",
+                  "constantValue": {
+                    "url": "https://a.mktgcdn.com/p/UHR6VTEvcR-yDMqPSOS7LyK87Qt56EOrmfNbhLQxI08/1267x1900.jpg",
+                    "width": 1267,
+                    "height": 1900
+                  },
+                  "constantValueEnabled": true
+                },
+                "styles": {
+                  "borderRadius": "default"
+                },
+                "aspectRatio": 0.67,
+                "imageConstrain": "filled"
+              },
+              "cardBackgroundColor": {
+                "selectedColor": "palette-primary-light",
+                "contrastingColor": "black"
+              }
+            }
+          },
+          {
+            "type": "BoutiqueShopReviews",
+            "props": {
+              "id": "BoutiqueShopReviews-fd529580-e53e-45ea-9f0c-923b8c85ca8c",
+              "heading": {
+                "text": {
+                  "field": "",
+                  "constantValue": {
+                    "defaultValue": "What Customers Are Saying",
+                    "hasLocalizedValue": "true"
+                  },
+                  "constantValueEnabled": true
+                },
+                "styles": {
+                  "fontSize": "25px",
+                  "fontStyle": "normal",
+                  "fontFamily": "inherit",
+                  "fontWeight": "500",
+                  "textTransform": "none"
+                }
+              },
+              "section": {
+                "backgroundColor": {
+                  "selectedColor": "palette-quaternary-light",
+                  "contrastingColor": "black"
+                },
+                "visibleOnLivePage": true
+              },
+              "ratingText": {
+                "styles": {
+                  "fontSize": "16px",
+                  "fontStyle": "normal",
+                  "fontFamily": "inherit",
+                  "fontWeight": "400",
+                  "textTransform": "none"
+                }
+              },
+              "reviewerName": {
+                "styles": {
+                  "fontSize": "25px",
+                  "fontStyle": "normal",
+                  "fontFamily": "inherit",
+                  "fontWeight": "400",
+                  "textTransform": "none"
+                }
+              },
+              "reviewContent": {
+                "styles": {
+                  "fontSize": "16px",
+                  "fontStyle": "normal",
+                  "fontFamily": "inherit",
+                  "fontWeight": "400",
+                  "textTransform": "none"
+                }
+              }
+            }
+          },
+          {
+            "type": "BoutiqueShopEvents",
+            "props": {
+              "id": "BoutiqueShopEvents-e641e471-ee61-41db-a2bc-c63458b961c7",
+              "cta": {
+                "data": {
+                  "cta": {
+                    "field": "",
+                    "constantValue": {
+                      "link": "#",
+                      "label": {
+                        "defaultValue": "Join Mailing List"
+                      },
+                      "linkType": "URL"
+                    },
+                    "constantValueEnabled": true
+                  },
+                  "actionType": "link",
+                  "openInNewTab": false
+                },
+                "styles": {
+                  "button": {
+                    "fontSize": "default",
+                    "fontStyle": "default",
+                    "fontFamily": "default",
+                    "fontWeight": "default",
+                    "borderRadius": "default",
+                    "letterSpacing": "default",
+                    "textTransform": "uppercase"
+                  },
+                  "variant": "primary"
+                }
+              },
+              "body": {
+                "text": {
+                  "field": "",
+                  "constantValue": {
+                    "defaultValue": {
+                      "html": "<p dir=\"ltr\" style=\"font-size: 14.67px; font-weight: 400; line-height: 18.67px; margin: 0; padding: 3px 2px 3px 2px; position: relative;\"><span>[[name]] hosts monthly style workshops and seasonal trend previews. Join our local mailing list to receive invitations to private shopping nights and early access to sales.</span></p>",
+                      "json": "{\"root\":{\"children\":[{\"children\":[{\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"[[name]] hosts monthly style workshops and seasonal trend previews. Join our local mailing list to receive invitations to private shopping nights and early access to sales.\",\"type\":\"text\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"paragraph\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"root\",\"version\":1}}"
+                    },
+                    "hasLocalizedValue": "true"
+                  },
+                  "constantValueEnabled": true
+                }
+              },
+              "heading": {
+                "text": {
+                  "field": "",
+                  "constantValue": {
+                    "defaultValue": "Community & Events",
+                    "hasLocalizedValue": "true"
+                  },
+                  "constantValueEnabled": true
+                },
+                "styles": {
+                  "fontSize": "25px",
+                  "fontStyle": "normal",
+                  "fontFamily": "inherit",
+                  "fontWeight": "500",
+                  "textTransform": "none"
+                }
+              },
+              "section": {
+                "backgroundColor": {
+                  "selectedColor": "palette-quaternary-light",
+                  "contrastingColor": "black"
+                },
+                "visibleOnLivePage": true
+              },
+              "eventImage": {
+                "image": {
+                  "field": "",
+                  "constantValue": {
+                    "url": "https://a.mktgcdn.com/p/fbSbItkZpsHpkc8qHH7GxvQkWzxsfm6mGc0k4Lmfl-A/1267x1900.jpg",
+                    "width": 1267,
+                    "height": 1900
+                  },
+                  "constantValueEnabled": true
+                },
+                "styles": {
+                  "borderRadius": "default"
+                },
+                "aspectRatio": 0.67,
+                "imageConstrain": "filled"
+              }
+            }
+          },
+          {
+            "type": "BoutiqueShopNearby",
+            "props": {
+              "id": "BoutiqueShopNearby-ca8163cf-270f-4d0f-90b3-5d8196fcb4c0",
+              "limit": 3,
+              "heading": {
+                "text": {
+                  "field": "",
+                  "constantValue": {
+                    "defaultValue": "Nearby Stores",
+                    "hasLocalizedValue": "true"
+                  },
+                  "constantValueEnabled": true
+                },
+                "styles": {
+                  "fontSize": "25px",
+                  "fontStyle": "normal",
+                  "fontFamily": "inherit",
+                  "fontWeight": "500",
+                  "textTransform": "none"
+                }
+              },
+              "section": {
+                "backgroundColor": {
+                  "selectedColor": "palette-quaternary-light",
+                  "contrastingColor": "black"
+                },
+                "visibleOnLivePage": true
+              },
+              "introText": {
+                "text": {
+                  "field": "",
+                  "constantValue": {
+                    "defaultValue": {
+                      "html": "<p dir=\"ltr\" style=\"font-size: 14.67px; font-weight: 400; line-height: 18.67px; margin: 0; padding: 3px 2px 3px 2px; position: relative;\"><span>Explore more [[name]] locations nearby with quick access to each store page and directions.</span></p>",
+                      "json": "{\"root\":{\"children\":[{\"children\":[{\"detail\":0,\"format\":0,\"mode\":\"normal\",\"style\":\"\",\"text\":\"Explore more [[name]] locations nearby with quick access to each store page and directions.\",\"type\":\"text\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"paragraph\",\"version\":1}],\"direction\":\"ltr\",\"format\":\"\",\"indent\":0,\"type\":\"root\",\"version\":1}}"
+                    },
+                    "hasLocalizedValue": "true"
+                  },
+                  "constantValueEnabled": true
+                }
+              },
+              "cardStyles": {
+                "phone": {
+                  "phoneFormat": "domestic",
+                  "includeHyperlink": true
+                },
+                "address": {
+                  "showRegion": true,
+                  "showCountry": true
+                },
+                "showHours": true,
+                "showPhone": true,
+                "hoursStyles": {
+                  "timeFormat": "12h",
+                  "showDayNames": true,
+                  "dayOfWeekFormat": "short",
+                  "showCurrentStatus": true
+                },
+                "showAddress": true,
+                "cardTitleColor": {
+                  "selectedColor": "palette-primary",
+                  "contrastingColor": "palette-primary-contrast"
+                },
+                "storeCtaStyles": {
+                  "link": {
+                    "fontSize": "default",
+                    "fontStyle": "default",
+                    "fontFamily": "default",
+                    "fontWeight": "default",
+                    "includeCaret": "default",
+                    "letterSpacing": "default",
+                    "textTransform": "default"
+                  },
+                  "variant": "link"
+                },
+                "cardBackgroundColor": {
+                  "selectedColor": "palette-tertiary-light",
+                  "contrastingColor": "black"
+                },
+                "directionsCtaStyles": {
+                  "button": {
+                    "fontSize": "default",
+                    "fontStyle": "default",
+                    "fontFamily": "default",
+                    "fontWeight": "default",
+                    "borderRadius": "default",
+                    "letterSpacing": "default",
+                    "textTransform": "default"
+                  },
+                  "variant": "primary"
+                }
+              },
+              "radiusMiles": 10
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "BoutiqueShopFooter",
+      "props": {
+        "id": "BoutiqueShopFooter-428ea5e7-b43a-496b-a4bd-aec096a7538c",
+        "phone": {
+          "items": [
+            {
+              "label": "",
+              "number": {
+                "field": "mainPhone",
+                "constantValue": "",
+                "constantValueEnabled": false
+              }
+            }
+          ],
+          "phoneFormat": "domestic",
+          "includeHyperlink": true
+        },
+        "address": {
+          "address": {
+            "field": "address",
+            "constantValue": {
+              "city": "",
+              "line1": "",
+              "region": "",
+              "postalCode": "",
+              "countryCode": ""
+            },
+            "constantValueEnabled": false
+          },
+          "showRegion": true,
+          "showCountry": true
+        },
+        "section": {
+          "backgroundColor": {
+            "selectedColor": "palette-secondary-dark",
+            "contrastingColor": "white"
+          },
+          "visibleOnLivePage": true
+        },
+        "brandLabel": {
+          "data": {
+            "cta": {
+              "field": "",
+              "constantValue": {
+                "link": "#",
+                "label": {
+                  "defaultValue": "Northline Apparel"
+                },
+                "linkType": "URL"
+              },
+              "constantValueEnabled": true
+            },
+            "actionType": "link",
+            "openInNewTab": false
+          },
+          "styles": {
+            "variant": "link"
+          }
+        },
+        "socialLinks": [
+          {
+            "cta": {
+              "field": "",
+              "constantValue": {
+                "link": {
+                  "defaultValue": "#"
+                },
+                "label": {
+                  "defaultValue": "Facebook"
+                },
+                "linkType": "URL",
+                "openInNewTab": true
+              },
+              "constantValueEnabled": true
+            },
+            "icon": "facebook",
+            "ariaLabel": "Facebook"
+          },
+          {
+            "cta": {
+              "field": "",
+              "constantValue": {
+                "link": {
+                  "defaultValue": "#"
+                },
+                "label": {
+                  "defaultValue": "X"
+                },
+                "linkType": "URL",
+                "openInNewTab": true
+              },
+              "constantValueEnabled": true
+            },
+            "icon": "x",
+            "ariaLabel": "X"
+          },
+          {
+            "cta": {
+              "field": "",
+              "constantValue": {
+                "link": {
+                  "defaultValue": "#"
+                },
+                "label": {
+                  "defaultValue": "Pinterest"
+                },
+                "linkType": "URL",
+                "openInNewTab": true
+              },
+              "constantValueEnabled": true
+            },
+            "icon": "pinterest",
+            "ariaLabel": "Pinterest"
+          },
+          {
+            "cta": {
+              "field": "",
+              "constantValue": {
+                "link": {
+                  "defaultValue": "#"
+                },
+                "label": {
+                  "defaultValue": "YouTube"
+                },
+                "linkType": "URL",
+                "openInNewTab": true
+              },
+              "constantValueEnabled": true
+            },
+            "icon": "youtube",
+            "ariaLabel": "YouTube"
+          },
+          {
+            "cta": {
+              "field": "",
+              "constantValue": {
+                "link": {
+                  "defaultValue": "#"
+                },
+                "label": {
+                  "defaultValue": "Instagram"
+                },
+                "linkType": "URL",
+                "openInNewTab": true
+              },
+              "constantValueEnabled": true
+            },
+            "icon": "instagram",
+            "ariaLabel": "Instagram"
+          },
+          {
+            "cta": {
+              "field": "",
+              "constantValue": {
+                "link": {
+                  "defaultValue": "#"
+                },
+                "label": {
+                  "defaultValue": "TikTok"
+                },
+                "linkType": "URL",
+                "openInNewTab": true
+              },
+              "constantValueEnabled": true
+            },
+            "icon": "tiktok",
+            "ariaLabel": "TikTok"
+          }
+        ],
+        "primaryLinks": [
+          {
+            "cta": {
+              "field": "",
+              "constantValue": {
+                "link": {
+                  "defaultValue": "#"
+                },
+                "label": {
+                  "defaultValue": "Departments"
+                },
+                "linkType": "URL",
+                "openInNewTab": false
+              },
+              "constantValueEnabled": true
+            }
+          },
+          {
+            "cta": {
+              "field": "",
+              "constantValue": {
+                "link": {
+                  "defaultValue": "#"
+                },
+                "label": {
+                  "defaultValue": "Shopping Services"
+                },
+                "linkType": "URL",
+                "openInNewTab": false
+              },
+              "constantValueEnabled": true
+            }
+          },
+          {
+            "cta": {
+              "field": "",
+              "constantValue": {
+                "link": {
+                  "defaultValue": "#"
+                },
+                "label": {
+                  "defaultValue": "Locations"
+                },
+                "linkType": "URL",
+                "openInNewTab": false
+              },
+              "constantValueEnabled": true
+            }
+          }
+        ],
+        "secondaryLinks": [
+          {
+            "cta": {
+              "field": "",
+              "constantValue": {
+                "link": {
+                  "defaultValue": "#"
+                },
+                "label": {
+                  "defaultValue": "Returns"
+                },
+                "linkType": "URL",
+                "openInNewTab": false
+              },
+              "constantValueEnabled": true
+            }
+          },
+          {
+            "cta": {
+              "field": "",
+              "constantValue": {
+                "link": {
+                  "defaultValue": "#"
+                },
+                "label": {
+                  "defaultValue": "Contact"
+                },
+                "linkType": "URL",
+                "openInNewTab": false
+              },
+              "constantValueEnabled": true
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "boutique-shop",
+  "displayName": "Boutique Shop",
+  "vertical": [
+    "RETAIL"
+  ],
+  "purpose": [
+    "LOCATION"
+  ],
+  "pageSetType": "ENTITY"
+}
