@@ -4,13 +4,12 @@ import * as React from "react";
 import { FiPlus } from "react-icons/fi";
 import { AnalyticsScopeProvider } from "@yext/pages-components";
 import {
+  Background,
   createItemSource,
   EntityField,
   getAnalyticsScopeHash,
   getDefaultRTF,
   getSurfaceColorStyle,
-  getThemeColorCssValue,
-  MaybeRTF,
   resolveComponentData,
   useDocument,
   VisibilityWrapper,
@@ -23,6 +22,7 @@ import {
   type YextFields,
 } from "@yext/visual-editor";
 import { PuckComponent } from "@puckeditor/core";
+import { renderRichText, resolveExplicitColor } from "../shared/sectionStyles";
 
 type ThemeSection = {
   visibleOnLivePage: boolean;
@@ -48,10 +48,6 @@ type FaqAnswerStyles = {
 type FaqStyles = {
   question: FaqQuestionStyles;
   answer: FaqAnswerStyles;
-};
-
-type RichTextStyleOverrides = Omit<Partial<StyledTextValue>, "color"> & {
-  color?: string | ThemeColor;
 };
 
 type FaqItemFields = {
@@ -316,45 +312,6 @@ const FAQ_STYLES = `
 }
 `;
 
-function resolveExplicitColor(
-  fontColor: string | ThemeColor | undefined,
-): React.CSSProperties | undefined {
-  const color = getThemeColorCssValue(fontColor);
-  return color ? { color } : undefined;
-}
-
-function renderResolvedRichText(
-  resolvedValue: unknown,
-  richTextStyleOverrides: RichTextStyleOverrides,
-): React.ReactNode {
-  if (React.isValidElement(resolvedValue)) {
-    return resolvedValue;
-  }
-
-  if (typeof resolvedValue === "string") {
-    return (
-      <MaybeRTF
-        data={resolvedValue}
-        richTextStyleOverrides={richTextStyleOverrides}
-      />
-    );
-  }
-
-  if (
-    resolvedValue &&
-    typeof resolvedValue === "object" &&
-    "html" in resolvedValue
-  ) {
-    return (
-      <MaybeRTF
-        data={resolvedValue as any}
-        richTextStyleOverrides={richTextStyleOverrides}
-      />
-    );
-  }
-
-  return null;
-}
 
 const FaqComponent: PuckComponent<BoutiqueShopFaqProps> = (props) => {
   const [openIndex, setOpenIndex] = React.useState(0);
@@ -372,7 +329,9 @@ const FaqComponent: PuckComponent<BoutiqueShopFaqProps> = (props) => {
         liveVisibility={props.section.visibleOnLivePage}
         isEditing={props.puck.isEditing}
       >
-        <section
+        <Background
+          as="section"
+          background={props.section.backgroundColor}
           className="boutique-faq"
           style={getSurfaceColorStyle(
             props.section.backgroundColor,
@@ -417,9 +376,7 @@ const FaqComponent: PuckComponent<BoutiqueShopFaqProps> = (props) => {
                     color: props.faqs.styles.answer.fontColor,
                   };
                   const resolvedAnswer = faq.answer
-                    ? resolveComponentData(faq.answer, locale, streamDocument, {
-                        richTextStyleOverrides: answerStyleOverrides,
-                      })
+                    ? resolveComponentData(faq.answer, locale, streamDocument)
                     : undefined;
 
                   return (
@@ -476,7 +433,7 @@ const FaqComponent: PuckComponent<BoutiqueShopFaqProps> = (props) => {
                                 props.faqs.styles.answer.styles.textTransform,
                             }}
                           >
-                            {renderResolvedRichText(
+                            {renderRichText(
                               resolvedAnswer,
                               answerStyleOverrides,
                             )}
@@ -489,7 +446,7 @@ const FaqComponent: PuckComponent<BoutiqueShopFaqProps> = (props) => {
               </ul>
             </EntityField>
           </div>
-        </section>
+        </Background>
       </VisibilityWrapper>
     </AnalyticsScopeProvider>
   );

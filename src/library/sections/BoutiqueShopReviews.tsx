@@ -3,6 +3,7 @@ import type { SectionConfig } from "@yext/visual-editor";
 import * as React from "react";
 import { AnalyticsScopeProvider } from "@yext/pages-components";
 import {
+  Background,
   getAggregateRating,
   getAnalyticsScopeHash,
   getSurfaceColorStyle,
@@ -20,6 +21,7 @@ import {
   type YextFields,
 } from "@yext/visual-editor";
 import { PuckComponent } from "@puckeditor/core";
+import { resolveExplicitColor } from "../shared/sectionStyles";
 
 type ThemeSection = {
   backgroundColor: ThemeColor;
@@ -320,12 +322,6 @@ const REVIEW_STYLES = `
 }
 `;
 
-function resolveExplicitColor(
-  fontColor: string | ThemeColor | undefined,
-): React.CSSProperties | undefined {
-  const color = getThemeColorCssValue(fontColor);
-  return color ? { color } : undefined;
-}
 
 function getContrastStarColor(sectionColor: ThemeColor): ThemeColor {
   const contrastColor =
@@ -422,7 +418,9 @@ const ReviewsComponent: PuckComponent<BoutiqueShopReviewsProps> = (
         liveVisibility={props.section.visibleOnLivePage}
         isEditing={props.puck.isEditing}
       >
-        <section
+        <Background
+          as="section"
+          background={props.section.backgroundColor}
           className="boutique-reviews"
           style={getSurfaceColorStyle(props.section.backgroundColor, streamDocument)}
         >
@@ -526,7 +524,7 @@ const ReviewsComponent: PuckComponent<BoutiqueShopReviewsProps> = (
               </>
             ) : null}
           </div>
-        </section>
+        </Background>
       </VisibilityWrapper>
     </AnalyticsScopeProvider>
   );

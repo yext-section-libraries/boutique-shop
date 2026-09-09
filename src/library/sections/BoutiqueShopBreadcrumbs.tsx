@@ -3,10 +3,10 @@ import type { SectionConfig } from "@yext/visual-editor";
 import * as React from "react";
 import { AnalyticsScopeProvider, Link } from "@yext/pages-components";
 import {
+  Background,
   EntityField,
   getAnalyticsScopeHash,
   getSurfaceColorStyle,
-  getThemeColorCssValue,
   resolveBreadcrumbs,
   resolveComponentData,
   useDocument,
@@ -20,6 +20,7 @@ import {
   type YextFields,
 } from "@yext/visual-editor";
 import { PuckComponent } from "@puckeditor/core";
+import { getTextStyle } from "../shared/sectionStyles";
 
 type ThemeSection = {
   backgroundColor: ThemeColor;
@@ -126,18 +127,6 @@ const defaultRootLabelColor: ThemeColor = {
   contrastingColor: "palette-quaternary-contrast",
 };
 
-const textStyles = (
-  styles: StyledTextValue,
-  fontColor?: string | ThemeColor,
-): React.CSSProperties => ({
-  color: getThemeColorCssValue(fontColor),
-  fontFamily: styles.fontFamily === "default" ? undefined : styles.fontFamily,
-  fontSize: styles.fontSize === "default" ? undefined : styles.fontSize,
-  fontWeight: styles.fontWeight === "default" ? undefined : styles.fontWeight,
-  fontStyle: styles.fontStyle === "default" ? undefined : styles.fontStyle,
-  textTransform:
-    styles.textTransform === "default" ? undefined : styles.textTransform,
-});
 
 const BreadcrumbsComponent: PuckComponent<BoutiqueShopBreadcrumbsProps> = (
   props,
@@ -182,7 +171,9 @@ const BreadcrumbsComponent: PuckComponent<BoutiqueShopBreadcrumbsProps> = (
         liveVisibility={props.section.visibleOnLivePage}
         isEditing={props.puck.isEditing}
       >
-        <section
+        <Background
+          as="section"
+          background={props.section.backgroundColor}
           className="boutique-breadcrumbs"
           style={getSurfaceColorStyle(
             props.section.backgroundColor,
@@ -229,7 +220,7 @@ const BreadcrumbsComponent: PuckComponent<BoutiqueShopBreadcrumbsProps> = (
                         <span
                           aria-current="page"
                           className="boutique-breadcrumbs__label boutique-breadcrumbs__current"
-                          style={textStyles(
+                          style={getTextStyle(
                             props.rootLabel.styles,
                             props.rootLabel.fontColor,
                           )}
@@ -249,7 +240,7 @@ const BreadcrumbsComponent: PuckComponent<BoutiqueShopBreadcrumbsProps> = (
                           className="boutique-breadcrumbs__label boutique-breadcrumbs__link"
                           eventName={`breadcrumb${originalIndex}`}
                           href={href}
-                          style={textStyles(
+                          style={getTextStyle(
                             props.rootLabel.styles,
                             props.rootLabel.fontColor,
                           )}
@@ -262,7 +253,7 @@ const BreadcrumbsComponent: PuckComponent<BoutiqueShopBreadcrumbsProps> = (
                         className="boutique-breadcrumbs__label boutique-breadcrumbs__link"
                         eventName={`breadcrumb${originalIndex}`}
                         href={href}
-                        style={textStyles(
+                        style={getTextStyle(
                           props.rootLabel.styles,
                           props.rootLabel.fontColor,
                         )}
@@ -275,7 +266,7 @@ const BreadcrumbsComponent: PuckComponent<BoutiqueShopBreadcrumbsProps> = (
               })}
             </ol>
           </div>
-        </section>
+        </Background>
       </VisibilityWrapper>
     </AnalyticsScopeProvider>
   );

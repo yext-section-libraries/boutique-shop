@@ -3,6 +3,7 @@ import type { SectionConfig } from "@yext/visual-editor";
 import * as React from "react";
 import { AnalyticsScopeProvider } from "@yext/pages-components";
 import {
+  Background,
   ComprehensiveCTA,
   ComprehensiveCTAValue,
   createItemSource,
@@ -12,11 +13,9 @@ import {
   getSurfaceColorStyle,
   getThemeColorCssValue,
   Image,
-  MaybeRTF,
   resolveComponentData,
   useDocument,
   VisibilityWrapper,
-  YextAutoField,
   type StyledImageValue,
   type StyledTextValue,
   type ThemeColor,
@@ -25,201 +24,19 @@ import {
   type TranslatableRichText,
   type TranslatableString,
   type YextComponentConfig,
-  type YextCustomFieldRenderProps,
   type YextEntityField,
   type YextFields,
 } from "@yext/visual-editor";
 import { PuckComponent } from "@puckeditor/core";
-
-type CtaButtonStyles = NonNullable<ComprehensiveCTAValue["styles"]["button"]>;
-type CtaLinkStyles = NonNullable<ComprehensiveCTAValue["styles"]["link"]>;
-
-const DEFAULT_CTA_TEXT_STYLES = {
-  fontFamily: "default",
-  fontSize: "default",
-  fontWeight: "default",
-  fontStyle: "default",
-  textTransform: "default",
-} satisfies Pick<
-  CtaButtonStyles,
-  "fontFamily" | "fontSize" | "fontWeight" | "fontStyle" | "textTransform"
->;
-
-const DEFAULT_CTA_BUTTON_STYLES = {
-  ...DEFAULT_CTA_TEXT_STYLES,
-  borderRadius: "default",
-  letterSpacing: "default",
-} satisfies CtaButtonStyles;
-
-const DEFAULT_CTA_LINK_STYLES = {
-  ...DEFAULT_CTA_TEXT_STYLES,
-  letterSpacing: "default",
-  includeCaret: "default",
-} satisfies CtaLinkStyles;
-
-const DEFAULT_COMPREHENSIVE_CTA = {
-  data: {
-    actionType: "link",
-    cta: {
-      field: "",
-      constantValue: {
-        ctaType: "textAndLink",
-        label: "Call to Action",
-        link: "#",
-        linkType: "URL",
-      },
-      constantValueEnabled: true,
-      selectedType: "textAndLink",
-    },
-    openInNewTab: false,
-    buttonText: "Button",
-    customId: "",
-    customClass: "",
-    dataAttributes: [],
-    ariaLabel: "Button",
-  },
-  styles: {
-    variant: "primary",
-    presetImage: "app-store",
-    button: DEFAULT_CTA_BUTTON_STYLES,
-    link: DEFAULT_CTA_LINK_STYLES,
-  },
-} satisfies ComprehensiveCTAValue;
-
-function isPresetImageCta(value: unknown): boolean {
-  if (!value || typeof value !== "object") {
-    return false;
-  }
-
-  const ctaValue = value as {
-    data?: {
-      cta?: {
-        selectedType?: string;
-        constantValue?: {
-          ctaType?: string;
-        };
-      };
-    };
-  };
-  return (
-    ctaValue.data?.cta?.constantValue?.ctaType === "presetImage" ||
-    ctaValue.data?.cta?.selectedType === "presetImage"
-  );
-}
-
-function renderButtonStylesFieldWithoutBorderRadius({
-  field,
-  value,
-  onChange,
-}: YextCustomFieldRenderProps<CtaButtonStyles>) {
-  const resolvedValue = {
-    ...DEFAULT_CTA_BUTTON_STYLES,
-    ...value,
-  };
-
-  return (
-    <YextAutoField
-      field={{
-        type: "object",
-        label: field.label,
-        objectFields: {
-          typography: {
-            label: "Typography",
-            type: "styledText",
-          },
-          letterSpacing: {
-            label: "Letter Spacing",
-            type: "basicSelector",
-            options: "LETTER_SPACING",
-          },
-        },
-      }}
-      value={{
-        typography: {
-          fontFamily: resolvedValue.fontFamily,
-          fontSize: resolvedValue.fontSize,
-          fontWeight: resolvedValue.fontWeight,
-          fontStyle: resolvedValue.fontStyle,
-          textTransform: resolvedValue.textTransform,
-        },
-        letterSpacing: resolvedValue.letterSpacing,
-      }}
-      onChange={(nextValue) => {
-        onChange({
-          ...resolvedValue,
-          ...nextValue.typography,
-          letterSpacing: nextValue.letterSpacing ?? resolvedValue.letterSpacing,
-        });
-      }}
-    />
-  );
-}
-
-function renderCtaStylesFieldWithoutBorderRadius({
-  field,
-  value,
-  onChange,
-}: YextCustomFieldRenderProps<ComprehensiveCTAValue["styles"]>) {
-  const resolvedValue = {
-    ...DEFAULT_COMPREHENSIVE_CTA.styles,
-    ...value,
-    button: {
-      ...DEFAULT_CTA_BUTTON_STYLES,
-      ...value?.button,
-    },
-    link: {
-      ...DEFAULT_CTA_LINK_STYLES,
-      ...value?.link,
-    },
-  } satisfies ComprehensiveCTAValue["styles"];
-  const showButtonStyles = resolvedValue.variant !== "link";
-  const showLinkStyles = resolvedValue.variant === "link";
-
-  return (
-    <YextAutoField
-      field={{
-        type: "object",
-        label: field.label,
-        objectFields: {
-          variant: {
-            type: "radio",
-            label: "Variant",
-            options: [
-              { label: "Solid", value: "primary" },
-              { label: "Outline", value: "secondary" },
-              { label: "Link", value: "link" },
-            ],
-          },
-          color: {
-            type: "basicSelector",
-            label: "Color",
-            options: "SITE_COLOR",
-            visible: true,
-          },
-          presetImage: {
-            type: "basicSelector",
-            label: "Preset Image",
-            options: "PRESET_IMAGE",
-            visible: false,
-          },
-          button: {
-            type: "custom",
-            label: "Button Styles",
-            visible: showButtonStyles,
-            render: renderButtonStylesFieldWithoutBorderRadius,
-          },
-          link: {
-            type: "styledLink",
-            label: "Link Styles",
-            visible: showLinkStyles,
-          },
-        },
-      }}
-      value={resolvedValue}
-      onChange={onChange}
-    />
-  );
-}
+import { ImageStylingFields } from "../shared/components/contentBlocks/image/styling";
+import {
+  isPresetImageCta,
+  renderCtaStylesFieldWithoutBorderRadius,
+} from "../shared/comprehensiveCta";
+import {
+  renderRichText,
+  resolveFontColor,
+} from "../shared/sectionStyles";
 
 type ThemeSection = {
   visibleOnLivePage: boolean;
@@ -245,10 +62,6 @@ type CardTitleStyles = {
 type CardDescriptionStyles = {
   styles: StyledTextValue;
   fontColor?: string | ThemeColor;
-};
-
-type RichTextStyleOverrides = Omit<Partial<StyledTextValue>, "color"> & {
-  color?: string | ThemeColor;
 };
 
 type CardImageStyles = {
@@ -536,56 +349,6 @@ const FEATURE_STYLES = `
 }
 `;
 
-function resolveThemeColor(
-  color: ThemeColor | undefined,
-  fallback: string,
-): string {
-  if (!color?.selectedColor) {
-    return fallback;
-  }
-
-  const selected = color.selectedColor;
-  if (selected.startsWith("palette-") && selected.endsWith("-light")) {
-    return `hsl(from var(--colors-${selected.replace(/-light$/, "")}) h s 98)`;
-  }
-
-  if (selected.startsWith("palette-") && selected.endsWith("-dark")) {
-    return `hsl(from var(--colors-${selected.replace(/-dark$/, "")}) h s 20)`;
-  }
-
-  return selected.startsWith("palette-")
-    ? `var(--colors-${selected})`
-    : selected;
-}
-
-function resolveFontColor(
-  fontColor: string | ThemeColor | undefined,
-  fallback: string,
-): string {
-  if (!fontColor) {
-    return fallback;
-  }
-
-  return typeof fontColor === "string"
-    ? fontColor
-    : resolveThemeColor(fontColor, fallback);
-}
-
-function renderResolvedRichText(
-  resolvedValue: React.ReactNode,
-  richTextStyleOverrides: RichTextStyleOverrides,
-) {
-  if (React.isValidElement(resolvedValue)) {
-    return resolvedValue;
-  }
-
-  return (
-    <MaybeRTF
-      data={resolvedValue as any}
-      richTextStyleOverrides={richTextStyleOverrides}
-    />
-  );
-}
 
 function renderImage(
   image: TranslatableAssetImage | undefined,
@@ -862,7 +625,12 @@ const FeaturedExperiencesComponent: PuckComponent<
         liveVisibility={props.section.visibleOnLivePage}
         isEditing={props.puck.isEditing}
       >
-        <section className="boutique-featured" style={sectionSurfaceStyle}>
+        <Background
+          as="section"
+          background={props.section.backgroundColor}
+          className="boutique-featured"
+          style={sectionSurfaceStyle}
+        >
           <style>{FEATURE_STYLES}</style>
           <div className="boutique-featured__shell">
             <EntityField
@@ -916,7 +684,6 @@ const FeaturedExperiencesComponent: PuckComponent<
                         card.description,
                         resolvedLocale,
                         streamDocument,
-                        { richTextStyleOverrides: descriptionStyleOverrides },
                       )
                     : undefined;
                   const ctaVariant =
@@ -996,7 +763,7 @@ const FeaturedExperiencesComponent: PuckComponent<
                             ),
                           }}
                         >
-                          {renderResolvedRichText(
+                          {renderRichText(
                             resolvedDescription,
                             descriptionStyleOverrides,
                           )}
@@ -1064,7 +831,7 @@ const FeaturedExperiencesComponent: PuckComponent<
               </div>
             </EntityField>
           </div>
-        </section>
+        </Background>
       </VisibilityWrapper>
     </AnalyticsScopeProvider>
   );
@@ -1160,11 +927,7 @@ const experienceFields = {
             label: "Image",
             type: "object",
             objectFields: {
-              aspectRatio: {
-                label: "Aspect Ratio",
-                type: "basicSelector",
-                options: "ASPECT_RATIO",
-              },
+              aspectRatio: ImageStylingFields.aspectRatio,
               imageConstrain: {
                 label: "Image Constrain",
                 type: "select",

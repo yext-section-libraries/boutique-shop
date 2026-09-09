@@ -4,10 +4,10 @@ import * as React from "react";
 import {
   Address,
   AnalyticsScopeProvider,
-  type AddressType,
   type HoursType,
 } from "@yext/pages-components";
 import {
+  Background,
   ComprehensiveCTA,
   EntityField,
   type ComprehensiveCTAValue,
@@ -17,7 +17,6 @@ import {
   getThemeColorCssValue,
   HoursStatusAtom,
   mergeMeta,
-  MaybeRTF,
   PhoneAtom,
   resolveComponentData,
   resolveUrlTemplate,
@@ -36,6 +35,12 @@ import {
   YextAutoField,
 } from "@yext/visual-editor";
 import { PuckComponent } from "@puckeditor/core";
+import {
+  buildDirectionsUrl,
+  renderRichText,
+  resolveFontColor,
+  resolveThemeColor,
+} from "../shared/sectionStyles";
 
 type CtaButtonStyles = NonNullable<ComprehensiveCTAValue["styles"]["button"]>;
 type CtaLinkStyles = NonNullable<ComprehensiveCTAValue["styles"]["link"]>;
@@ -382,42 +387,6 @@ const NEARBY_STYLES = `
 }
 `;
 
-function resolveThemeColor(
-  color: ThemeColor | undefined,
-  fallback: string,
-): string {
-  if (!color?.selectedColor) {
-    return fallback;
-  }
-
-  const selected = color.selectedColor;
-  if (selected.startsWith("palette-") && selected.endsWith("-light")) {
-    return `hsl(from var(--colors-${selected.replace(/-light$/, "")}) h s 98)`;
-  }
-
-  if (selected.startsWith("palette-") && selected.endsWith("-dark")) {
-    return `hsl(from var(--colors-${selected.replace(/-dark$/, "")}) h s 20)`;
-  }
-
-  return selected.startsWith("palette-")
-    ? `var(--colors-${selected})`
-    : selected;
-}
-
-function resolveFontColor(
-  fontColor: string | ThemeColor | undefined,
-  fallback: string,
-) {
-  if (!fontColor) {
-    return fallback;
-  }
-
-  if (typeof fontColor === "string") {
-    return fontColor;
-  }
-
-  return resolveThemeColor(fontColor, fallback);
-}
 
 function renderCtaButtonStylesFieldWithoutBorderRadius({
   field,
@@ -579,48 +548,6 @@ function getNearbyCtaStyle(
   } as React.CSSProperties;
 }
 
-function buildDirectionsUrl(
-  address: AddressType | undefined,
-): string | undefined {
-  if (!address) {
-    return undefined;
-  }
-
-  const query = [
-    address.line1,
-    address.line2,
-    address.city,
-    address.region,
-    address.postalCode,
-    address.countryCode,
-  ]
-    .filter(Boolean)
-    .join(", ");
-
-  return query
-    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
-    : undefined;
-}
-
-function renderResolvedRichText(resolvedValue: unknown): React.ReactNode {
-  if (React.isValidElement(resolvedValue)) {
-    return resolvedValue;
-  }
-
-  if (typeof resolvedValue === "string") {
-    return <MaybeRTF data={resolvedValue} />;
-  }
-
-  if (
-    resolvedValue &&
-    typeof resolvedValue === "object" &&
-    "html" in resolvedValue
-  ) {
-    return <MaybeRTF data={resolvedValue as any} />;
-  }
-
-  return null;
-}
 
 const NearbyComponent: PuckComponent<BoutiqueShopNearbyProps> = (props) => {
   const streamDocument = useDocument<StoreDocument>();
@@ -686,7 +613,12 @@ const NearbyComponent: PuckComponent<BoutiqueShopNearbyProps> = (props) => {
     <AnalyticsScopeProvider
       name={`BoutiqueShopNearby${getAnalyticsScopeHash(props.id ?? "nearby")}`}
     >
-      <section className="boutique-nearby" style={sectionSurfaceStyle}>
+      <Background
+        as="section"
+        background={props.section.backgroundColor}
+        className="boutique-nearby"
+        style={sectionSurfaceStyle}
+      >
         <style>{NEARBY_STYLES}</style>
         <div className="boutique-nearby__shell">
           <EntityField
@@ -725,7 +657,7 @@ const NearbyComponent: PuckComponent<BoutiqueShopNearbyProps> = (props) => {
                 ),
               }}
             >
-              {renderResolvedRichText(resolvedIntro)}
+              {renderRichText(resolvedIntro)}
             </div>
           </EntityField>
           {shouldShowMessage ? (
@@ -912,7 +844,7 @@ const NearbyComponent: PuckComponent<BoutiqueShopNearbyProps> = (props) => {
             </ul>
           )}
         </div>
-      </section>
+      </Background>
     </AnalyticsScopeProvider>
   );
 };

@@ -1,13 +1,11 @@
 import type { SectionConfig } from "@yext/visual-editor";
 
-import { isValidElement } from "react";
 import { PuckComponent } from "@puckeditor/core";
 import { CircleSlash2 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import {
   Body,
   EntityField,
-  MaybeRTF,
   PageSection,
   type StyledTextValue,
   type ThemeColor,
@@ -20,9 +18,9 @@ import {
   getDefaultRTF,
   resolveComponentData,
   resolveYextEntityField,
-  toPuckFields,
   useDocument,
 } from "@yext/visual-editor";
+import { isRichTextEmpty, renderRichText } from "../shared/sectionStyles";
 
 type BoutiqueShopBannerProps = {
   data: {
@@ -37,23 +35,6 @@ type BoutiqueShopBannerProps = {
     backgroundColor: ThemeColor;
     visibleOnLivePage: boolean;
   };
-};
-
-const isRichTextEmpty = (value: unknown): boolean => {
-  if (!value) {
-    return true;
-  }
-
-  if (typeof value === "string") {
-    return value.trim() === "";
-  }
-
-  if (typeof value === "object" && "html" in value) {
-    const html = (value as { html?: unknown }).html;
-    return typeof html !== "string" || html.trim() === "";
-  }
-
-  return false;
 };
 
 const BoutiqueShopBannerFields: YextFields<BoutiqueShopBannerProps> = {
@@ -165,7 +146,6 @@ const BoutiqueShopBannerComponent: PuckComponent<BoutiqueShopBannerProps> = ({
     data.text,
     i18n.language,
     streamDocument,
-    { richTextStyleOverrides },
   );
 
   if (!resolvedText) {
@@ -189,14 +169,7 @@ const BoutiqueShopBannerComponent: PuckComponent<BoutiqueShopBannerProps> = ({
         displayName="Banner Text"
         fieldId={data.text.field}
       >
-        {isValidElement(resolvedText) ? (
-          resolvedText
-        ) : typeof resolvedText === "string" ? (
-          <MaybeRTF
-            data={resolvedText}
-            richTextStyleOverrides={richTextStyleOverrides}
-          />
-        ) : null}
+        {renderRichText(resolvedText, richTextStyleOverrides)}
       </EntityField>
     </PageSection>
   );
@@ -207,7 +180,7 @@ const BoutiqueShopBannerComponent: PuckComponent<BoutiqueShopBannerProps> = ({
  */
 export const BoutiqueShopBanner: YextComponentConfig<BoutiqueShopBannerProps> = {
   label: "Banner",
-  fields: toPuckFields(BoutiqueShopBannerFields),
+  fields: BoutiqueShopBannerFields,
   defaultProps: {
     data: {
       text: {

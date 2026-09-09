@@ -3,13 +3,12 @@ import type { SectionConfig } from "@yext/visual-editor";
 import * as React from "react";
 import { AnalyticsScopeProvider } from "@yext/pages-components";
 import {
+  Background,
   EntityField,
   getAnalyticsScopeHash,
   getDefaultRTF,
   getSurfaceColorStyle,
-  getThemeColorCssValue,
   Image,
-  MaybeRTF,
   resolveComponentData,
   useDocument,
   VisibilityWrapper,
@@ -24,6 +23,8 @@ import {
   type YextFields,
 } from "@yext/visual-editor";
 import { PuckComponent } from "@puckeditor/core";
+import { ImageStylingFields } from "../shared/components/contentBlocks/image/styling";
+import { renderRichText, resolveExplicitColor } from "../shared/sectionStyles";
 
 type ThemeSection = {
   backgroundColor: ThemeColor;
@@ -209,32 +210,6 @@ const ABOUT_STYLES = `
 }
 `;
 
-function resolveExplicitColor(
-  fontColor: string | ThemeColor | undefined,
-): React.CSSProperties | undefined {
-  const color = getThemeColorCssValue(fontColor);
-  return color ? { color } : undefined;
-}
-
-function renderResolvedRichText(resolvedValue: unknown): React.ReactNode {
-  if (React.isValidElement(resolvedValue)) {
-    return resolvedValue;
-  }
-
-  if (typeof resolvedValue === "string") {
-    return <MaybeRTF data={resolvedValue} />;
-  }
-
-  if (
-    resolvedValue &&
-    typeof resolvedValue === "object" &&
-    "html" in resolvedValue
-  ) {
-    return <MaybeRTF data={resolvedValue as any} />;
-  }
-
-  return null;
-}
 
 const AboutComponent: PuckComponent<BoutiqueShopAboutProps> = (props) => {
   const streamDocument = useDocument();
@@ -313,7 +288,9 @@ const AboutComponent: PuckComponent<BoutiqueShopAboutProps> = (props) => {
         liveVisibility={props.section.visibleOnLivePage}
         isEditing={props.puck.isEditing}
       >
-        <section
+        <Background
+          as="section"
+          background={props.section.backgroundColor}
           className="boutique-about"
           style={getSurfaceColorStyle(
             props.section.backgroundColor,
@@ -356,7 +333,7 @@ const AboutComponent: PuckComponent<BoutiqueShopAboutProps> = (props) => {
                   className="boutique-about__copy"
                   style={resolveExplicitColor(props.body.fontColor)}
                 >
-                  {renderResolvedRichText(resolvedBody)}
+                  {renderRichText(resolvedBody)}
                 </div>
               </EntityField>
             </article>
@@ -380,7 +357,7 @@ const AboutComponent: PuckComponent<BoutiqueShopAboutProps> = (props) => {
               </div>
             </EntityField>
           </div>
-        </section>
+        </Background>
       </VisibilityWrapper>
     </AnalyticsScopeProvider>
   );
@@ -456,11 +433,7 @@ const aboutFields: YextFields<BoutiqueShopAboutProps> = {
         label: "Image",
         filter: { types: ["type.image"] },
       },
-      aspectRatio: {
-        label: "Aspect Ratio",
-        type: "basicSelector",
-        options: "ASPECT_RATIO",
-      },
+      aspectRatio: ImageStylingFields.aspectRatio,
       imageConstrain: {
         label: "Image Constrain",
         type: "select",
