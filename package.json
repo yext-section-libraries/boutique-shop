@@ -1,7 +1,7 @@
 {
-  "name": "pages-visual-editor-starter",
+  "name": "boutique-shop",
   "version": "0.0.0",
-  "description": "An example repository to help users get started with Visual Editor Section Libraries on Yext Pages",
+  "description": "A Yext Pages Visual Editor Section Library",
   "author": "sprumo@yext.com",
   "license": "BSD-3-Clause",
   "type": "module",
