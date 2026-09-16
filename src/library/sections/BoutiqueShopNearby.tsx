@@ -18,6 +18,7 @@ import {
   HoursStatusAtom,
   mergeMeta,
   PhoneAtom,
+  msg,
   resolveComponentData,
   resolveUrlTemplate,
   useDocument,
@@ -405,11 +406,11 @@ function renderCtaButtonStylesFieldWithoutBorderRadius({
         label: field.label,
         objectFields: {
           typography: {
-            label: "Typography",
+            label: msg("fields.typography", "Typography"),
             type: "styledText",
           },
           letterSpacing: {
-            label: "Letter Spacing",
+            label: msg("fields.letterSpacing", "Letter Spacing"),
             type: "basicSelector",
             options: "LETTER_SPACING",
           },
@@ -463,27 +464,27 @@ function renderNearbyCtaStylesField({
         objectFields: {
           variant: {
             type: "radio",
-            label: "Variant",
+            label: msg("fields.variant", "Variant"),
             options: [
-              { label: "Solid", value: "primary" },
-              { label: "Outline", value: "secondary" },
-              { label: "Link", value: "link" },
+              { label: msg("fields.options.solid", "Solid"), value: "primary" },
+              { label: msg("fields.options.outline", "Outline"), value: "secondary" },
+              { label: msg("fields.options.link", "Link"), value: "link" },
             ],
           },
           color: {
             type: "basicSelector",
-            label: "Color",
+            label: msg("fields.color", "Color"),
             options: "SITE_COLOR",
           },
           button: {
             type: "custom",
-            label: "Button Styles",
+            label: msg("fields.buttonStyles", "Button Styles"),
             visible: showButtonStyles,
             render: renderCtaButtonStylesFieldWithoutBorderRadius,
           },
           link: {
             type: "styledLink",
-            label: "Link Styles",
+            label: msg("fields.linkStyles", "Link Styles"),
             visible: !showButtonStyles,
           },
         },
@@ -851,194 +852,194 @@ const NearbyComponent: PuckComponent<BoutiqueShopNearbyProps> = (props) => {
 
 const nearbyFields: YextFields<BoutiqueShopNearbyProps> = {
   section: {
-    label: "Section",
+    label: msg("fields.section", "Section"),
     type: "object",
     objectFields: {
       backgroundColor: {
-        label: "Background Color",
+        label: msg("fields.backgroundColor", "Background Color"),
         type: "basicSelector",
         options: "BACKGROUND_COLOR",
       },
       visibleOnLivePage: {
-        label: "Visible on Live Page",
+        label: msg("fields.visibleOnLivePage", "Visible on Live Page"),
         type: "radio",
         options: [
-          { label: "Yes", value: true },
-          { label: "No", value: false },
+          { label: msg("fields.options.yes", "Yes"), value: true },
+          { label: msg("fields.options.no", "No"), value: false },
         ],
       },
     },
   },
   heading: {
-    label: "Heading",
+    label: msg("fields.heading", "Heading"),
     type: "object",
     objectFields: {
       text: {
         type: "entityField",
-        label: "Text",
+        label: msg("fields.text", "Text"),
         filter: { types: ["type.string"] },
       },
       styles: {
-        label: "Text Styles",
+        label: msg("fields.textStyles", "Text Styles"),
         type: "styledText",
       },
       fontColor: {
-        label: "Font Color",
+        label: msg("fields.fontColor", "Font Color"),
         type: "basicSelector",
         options: "SITE_COLOR",
       },
     },
   },
   introText: {
-    label: "Intro Text",
+    label: msg("fields.introText", "Intro Text"),
     type: "object",
     objectFields: {
       text: {
         type: "entityField",
-        label: "Text",
+        label: msg("fields.text", "Text"),
         filter: { types: ["type.rich_text_v2"] },
       },
       fontColor: {
-        label: "Font Color",
+        label: msg("fields.fontColor", "Font Color"),
         type: "basicSelector",
         options: "SITE_COLOR",
       },
     },
   },
   radiusMiles: {
-    label: "Radius Miles",
+    label: msg("fields.radiusMiles", "Radius Miles"),
     type: "number",
   },
   limit: {
-    label: "Limit",
+    label: msg("fields.limit", "Limit"),
     type: "number",
   },
   cardStyles: {
-    label: "Card Styles",
+    label: msg("fields.cardStyles", "Card Styles"),
     type: "object",
     objectFields: {
       cardBackgroundColor: {
-        label: "Background Color",
+        label: msg("fields.backgroundColor", "Background Color"),
         type: "basicSelector",
         options: "BACKGROUND_COLOR",
       },
       cardTitleColor: {
-        label: "Title Color",
+        label: msg("fields.titleColor", "Title Color"),
         type: "basicSelector",
         options: "SITE_COLOR",
       },
       storeCtaStyles: {
-        label: "View Store CTA",
+        label: msg("fields.viewStoreCta", "View Store CTA"),
         type: "custom",
         render: renderNearbyCtaStylesField,
       },
       directionsCtaStyles: {
-        label: "Directions CTA",
+        label: msg("fields.directionsCta", "Directions CTA"),
         type: "custom",
         render: renderNearbyCtaStylesField,
       },
       showAddress: {
-        label: "Show Address",
+        label: msg("fields.showAddress", "Show Address"),
         type: "radio",
         options: [
-          { label: "Yes", value: true },
-          { label: "No", value: false },
+          { label: msg("fields.options.yes", "Yes"), value: true },
+          { label: msg("fields.options.no", "No"), value: false },
         ],
       },
       showPhone: {
-        label: "Show Phone",
+        label: msg("fields.showPhone", "Show Phone"),
         type: "radio",
         options: [
-          { label: "Yes", value: true },
-          { label: "No", value: false },
+          { label: msg("fields.options.yes", "Yes"), value: true },
+          { label: msg("fields.options.no", "No"), value: false },
         ],
       },
       showHours: {
-        label: "Show Hours",
+        label: msg("fields.showHours", "Show Hours"),
         type: "radio",
         options: [
-          { label: "Yes", value: true },
-          { label: "No", value: false },
+          { label: msg("fields.options.yes", "Yes"), value: true },
+          { label: msg("fields.options.no", "No"), value: false },
         ],
       },
       hoursStyles: {
-        label: "Hours Styles",
+        label: msg("fields.hoursStyles", "Hours Styles"),
         type: "object",
         objectFields: {
           showCurrentStatus: {
-            label: "Show Current Status",
+            label: msg("fields.showCurrentStatus", "Show Current Status"),
             type: "radio",
             options: [
-              { label: "Yes", value: true },
-              { label: "No", value: false },
+              { label: msg("fields.options.yes", "Yes"), value: true },
+              { label: msg("fields.options.no", "No"), value: false },
             ],
           },
           timeFormat: {
-            label: "Time Format",
+            label: msg("fields.timeFormat", "Time Format"),
             type: "select",
             options: [
-              { label: "12 Hour", value: "12h" },
-              { label: "24 Hour", value: "24h" },
+              { label: msg("fields.options.hour12Label", "12 Hour"), value: "12h" },
+              { label: msg("fields.options.hour24Label", "24 Hour"), value: "24h" },
             ],
           },
           dayOfWeekFormat: {
-            label: "Day Of Week Format",
+            label: msg("fields.dayOfWeekFormatLabel", "Day Of Week Format"),
             type: "select",
             options: [
-              { label: "Short", value: "short" },
-              { label: "Long", value: "long" },
+              { label: msg("fields.options.short", "Short"), value: "short" },
+              { label: msg("fields.options.long", "Long"), value: "long" },
             ],
           },
           showDayNames: {
-            label: "Show Day Names",
+            label: msg("fields.showDayNames", "Show Day Names"),
             type: "radio",
             options: [
-              { label: "Yes", value: true },
-              { label: "No", value: false },
+              { label: msg("fields.options.yes", "Yes"), value: true },
+              { label: msg("fields.options.no", "No"), value: false },
             ],
           },
         },
       },
       phone: {
-        label: "Phone",
+        label: msg("fields.phone", "Phone"),
         type: "object",
         objectFields: {
           phoneFormat: {
-            label: "Phone Number Format",
+            label: msg("fields.phoneNumberFormat", "Phone Number Format"),
             type: "radio",
             options: [
-              { label: "Domestic", value: "domestic" },
-              { label: "International", value: "international" },
+              { label: msg("fields.options.domestic", "Domestic"), value: "domestic" },
+              { label: msg("fields.options.international", "International"), value: "international" },
             ],
           },
           includeHyperlink: {
-            label: "Include Phone Hyperlink",
+            label: msg("fields.includePhoneHyperlink", "Include Phone Hyperlink"),
             type: "radio",
             options: [
-              { label: "Yes", value: true },
-              { label: "No", value: false },
+              { label: msg("fields.options.yes", "Yes"), value: true },
+              { label: msg("fields.options.no", "No"), value: false },
             ],
           },
         },
       },
       address: {
-        label: "Address",
+        label: msg("fields.address", "Address"),
         type: "object",
         objectFields: {
           showRegion: {
-            label: "Show Region",
+            label: msg("fields.showRegion", "Show Region"),
             type: "radio",
             options: [
-              { label: "Yes", value: true },
-              { label: "No", value: false },
+              { label: msg("fields.options.yes", "Yes"), value: true },
+              { label: msg("fields.options.no", "No"), value: false },
             ],
           },
           showCountry: {
-            label: "Show Country",
+            label: msg("fields.showCountry", "Show Country"),
             type: "radio",
             options: [
-              { label: "Yes", value: true },
-              { label: "No", value: false },
+              { label: msg("fields.options.yes", "Yes"), value: true },
+              { label: msg("fields.options.no", "No"), value: false },
             ],
           },
         },

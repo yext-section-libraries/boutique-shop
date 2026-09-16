@@ -10,6 +10,7 @@ import {
   getThemeColorCssValue,
   EntityField,
   ReviewStars,
+  msg,
   resolveComponentData,
   useDocument,
   VisibilityWrapper,
@@ -21,6 +22,7 @@ import {
   type YextFields,
 } from "@yext/visual-editor";
 import { PuckComponent } from "@puckeditor/core";
+import { useTranslation } from "react-i18next";
 import { resolveExplicitColor } from "../shared/sectionStyles";
 
 type ThemeSection = {
@@ -377,6 +379,7 @@ function textStyle(
 const ReviewsComponent: PuckComponent<BoutiqueShopReviewsProps> = (
   props,
 ) => {
+  const { t } = useTranslation();
   const streamDocument = useDocument<StoreDocument>();
   const locale = streamDocument.locale ?? "en";
 
@@ -449,7 +452,7 @@ const ReviewsComponent: PuckComponent<BoutiqueShopReviewsProps> = (
               <>
                 <div
                   className="boutique-reviews__summary"
-                  aria-label="Review summary"
+                  aria-label={t("reviewSummary", "Review summary")}
                 >
                   <span className="boutique-reviews__summaryScore">
                     {summaryAverageRating.toFixed(1)}
@@ -471,7 +474,10 @@ const ReviewsComponent: PuckComponent<BoutiqueShopReviewsProps> = (
                     |
                   </span>
                   <span className="boutique-reviews__summaryCount">
-                    {summaryReviewCount} Reviews
+                    {t("reviewWithCount", {
+                      defaultValue: "{{count}} Reviews",
+                      count: summaryReviewCount,
+                    })}
                   </span>
                 </div>
                 <ul className="boutique-reviews__list">
@@ -488,7 +494,7 @@ const ReviewsComponent: PuckComponent<BoutiqueShopReviewsProps> = (
                             defaultReviewerNameStyle,
                           )}
                         >
-                          {review.authorName ?? "Customer"}
+                          {review.authorName ?? t("customer", "Customer")}
                         </h3>
                         <span
                           className="boutique-reviews__stars boutique-reviews__itemStars"
@@ -506,7 +512,11 @@ const ReviewsComponent: PuckComponent<BoutiqueShopReviewsProps> = (
                             defaultRatingTextStyle,
                           )}
                         >
-                          {review.rating ?? 5}/5 stars
+                          {t(
+                            "ratingOutOfFiveStars",
+                            "{{rating}}/5 stars",
+                            { rating: review.rating ?? 5 },
+                          )}
                         </span>
                       </div>
                       <p
@@ -532,94 +542,94 @@ const ReviewsComponent: PuckComponent<BoutiqueShopReviewsProps> = (
 
 const reviewsFields: YextFields<BoutiqueShopReviewsProps> = {
   section: {
-    label: "Section",
+    label: msg("fields.section", "Section"),
     type: "object",
     objectFields: {
       backgroundColor: {
-        label: "Background Color",
+        label: msg("fields.backgroundColor", "Background Color"),
         type: "basicSelector",
         options: "BACKGROUND_COLOR",
       },
       visibleOnLivePage: {
-        label: "Visible on Live Page",
+        label: msg("fields.visibleOnLivePage", "Visible on Live Page"),
         type: "radio",
         options: [
-          { label: "Yes", value: true },
-          { label: "No", value: false },
+          { label: msg("fields.options.yes", "Yes"), value: true },
+          { label: msg("fields.options.no", "No"), value: false },
         ],
       },
     },
   },
   heading: {
-    label: "Heading",
+    label: msg("fields.heading", "Heading"),
     type: "object",
     objectFields: {
       text: {
         type: "entityField",
-        label: "Text",
+        label: msg("fields.text", "Text"),
         filter: { types: ["type.string"] },
       },
       styles: {
-        label: "Text Styles",
+        label: msg("fields.textStyles", "Text Styles"),
         type: "styledText",
       },
       fontColor: {
-        label: "Font Color",
+        label: msg("fields.fontColor", "Font Color"),
         type: "basicSelector",
         options: "SITE_COLOR",
       },
     },
   },
   summaryStarsColor: {
-    label: "Summary Stars Color",
+    label: msg("fields.summaryStarsColor", "Summary Stars Color"),
     type: "basicSelector",
     options: "SITE_COLOR",
   },
   itemStarsColor: {
-    label: "Review Item Stars Color",
+    label: msg("fields.reviewItemStarsColor", "Review Item Stars Color"),
     type: "basicSelector",
     options: "SITE_COLOR",
   },
   reviewerName: {
-    label: "Reviewer Name",
+    label: msg("fields.reviewerName", "Reviewer Name"),
     type: "object",
     objectFields: {
       styles: {
-        label: "Text Styles",
+        label: msg("fields.textStyles", "Text Styles"),
         type: "styledText",
       },
       fontColor: {
-        label: "Font Color",
+        label: msg("fields.fontColor", "Font Color"),
         type: "basicSelector",
         options: "SITE_COLOR",
       },
     },
   },
   ratingText: {
-    label: "Rating Text",
+    label: msg("fields.ratingText", "Rating Text"),
     type: "object",
     objectFields: {
       styles: {
-        label: "Text Styles",
+        label: msg("fields.textStyles", "Text Styles"),
         type: "styledText",
       },
       fontColor: {
-        label: "Font Color",
+        label: msg("fields.fontColor", "Font Color"),
         type: "basicSelector",
         options: "SITE_COLOR",
       },
     },
   },
   reviewContent: {
-    label: "Review Content",
+    label: msg("fields.reviewContent", "Review Content"),
     type: "object",
     objectFields: {
       styles: {
-        label: "Text Styles",
+        label: msg("fields.textStyles", "Text Styles"),
         type: "styledText",
       },
       fontColor: {
-        label: "Font Color",
+        label: msg("fields.fontColor", "Font Color"),
         type: "basicSelector",
         options: "SITE_COLOR",
       },
