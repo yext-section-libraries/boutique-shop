@@ -12,6 +12,7 @@ import {
   getSurfaceColorStyle,
   getThemeColorCssValue,
   normalizeLink,
+  msg,
   resolveComponentData,
   useDocument,
   type ThemeColor,
@@ -23,6 +24,7 @@ import {
 } from "@yext/visual-editor";
 import { parsePhoneNumber } from "awesome-phonenumber";
 import { PuckComponent } from "@puckeditor/core";
+import { useTranslation } from "react-i18next";
 import {
   isPresetImageCta,
   renderComprehensiveCtaFieldWithoutBorderRadius,
@@ -463,6 +465,7 @@ function formatPhoneNumber(
 }
 
 const FooterComponent: PuckComponent<BoutiqueShopFooterProps> = (props) => {
+  const { t } = useTranslation();
   const streamDocument = useDocument<StoreDocument>();
   const scopeName = `YextBoutiqueShopFooter${getAnalyticsScopeHash(props.id ?? "footer")}`;
   const locale = streamDocument.locale ?? "en";
@@ -619,7 +622,7 @@ const FooterComponent: PuckComponent<BoutiqueShopFooterProps> = (props) => {
 
                 <div
                   className="boutique-footer__social"
-                  aria-label="Social links"
+                  aria-label={t("socialLinks", "Social links")}
                 >
                   {resolvedSocialLinks.map((socialLink) => {
                     return (
@@ -650,7 +653,7 @@ const FooterComponent: PuckComponent<BoutiqueShopFooterProps> = (props) => {
                 <div className="boutique-footer__meta">
                   <div
                     className="boutique-footer__primaryNav"
-                    aria-label="Footer navigation"
+                    aria-label={t("footerNavigation", "Footer navigation")}
                   >
                     {resolvedPrimaryLinks.map((link) => (
                       <EntityField
@@ -673,7 +676,10 @@ const FooterComponent: PuckComponent<BoutiqueShopFooterProps> = (props) => {
 
                   <div
                     className="boutique-footer__secondary"
-                    aria-label="Secondary footer links"
+                    aria-label={t(
+                      "secondaryFooterLinks",
+                      "Secondary footer links",
+                    )}
                   >
                     {resolvedSecondaryLinks.map((link) => (
                       <EntityField
@@ -807,24 +813,24 @@ function getFooterSocialSummary(item: FooterSocialLink): string {
 
 const footerFields: YextFields<BoutiqueShopFooterProps> = {
   section: {
-    label: "Section",
+    label: msg("fields.section", "Section"),
     type: "object",
     objectFields: {
       backgroundColor: {
-        label: "Background Color",
+        label: msg("fields.backgroundColor", "Background Color"),
         type: "basicSelector",
         options: "BACKGROUND_COLOR",
       },
       visibleOnLivePage: {
-        label: "Visible on Live Page",
+        label: msg("fields.visibleOnLivePage", "Visible on Live Page"),
         type: "radio",
         options: [
           {
-            label: "Yes",
+            label: msg("fields.options.yes", "Yes"),
             value: true,
           },
           {
-            label: "No",
+            label: msg("fields.options.no", "No"),
             value: false,
           },
         ],
@@ -832,27 +838,27 @@ const footerFields: YextFields<BoutiqueShopFooterProps> = {
     },
   },
   brandLabel: {
-    label: "Brand Label",
+    label: msg("fields.brandLabel", "Brand Label"),
     type: "custom",
     render: renderComprehensiveCtaFieldWithoutBorderRadius,
   },
   socialLinks: {
-    label: "Social Links",
+    label: msg("fields.socialLinks", "Social Links"),
     type: "array",
     arrayFields: {
       cta: {
-        label: "CTA",
+        label: msg("fields.cta", "CTA"),
         type: "entityField",
         filter: {
           types: ["type.cta"],
         },
       },
       ariaLabel: {
-        label: "Aria Label",
+        label: msg("fields.ariaLabel", "Aria Label"),
         type: "text",
       },
       icon: {
-        label: "Icon",
+        label: msg("fields.icon", "Icon"),
         type: "radio",
         options: socialIconOptions,
       },
@@ -861,11 +867,11 @@ const footerFields: YextFields<BoutiqueShopFooterProps> = {
     getItemSummary: getFooterSocialSummary,
   },
   primaryLinks: {
-    label: "Primary Links",
+    label: msg("fields.primaryLinks", "Primary Links"),
     type: "array",
     arrayFields: {
       cta: {
-        label: "Link",
+        label: msg("fields.link", "Link"),
         type: "entityField",
         filter: {
           types: ["type.cta"],
@@ -876,11 +882,11 @@ const footerFields: YextFields<BoutiqueShopFooterProps> = {
     getItemSummary: getFooterLinkSummary,
   },
   secondaryLinks: {
-    label: "Secondary Links",
+    label: msg("fields.secondaryLinks", "Secondary Links"),
     type: "array",
     arrayFields: {
       cta: {
-        label: "Link",
+        label: msg("fields.link", "Link"),
         type: "entityField",
         filter: {
           types: ["type.cta"],
@@ -891,51 +897,51 @@ const footerFields: YextFields<BoutiqueShopFooterProps> = {
     getItemSummary: getFooterLinkSummary,
   },
   address: {
-    label: "Address",
+    label: msg("fields.address", "Address"),
     type: "object",
     objectFields: {
       address: {
         type: "entityField",
-        label: "Address",
+        label: msg("fields.address", "Address"),
         filter: {
           types: ["type.address"],
         },
       },
       showRegion: {
-        label: "Show Region",
+        label: msg("fields.showRegion", "Show Region"),
         type: "radio",
         options: [
-          { label: "Yes", value: true },
-          { label: "No", value: false },
+          { label: msg("fields.options.yes", "Yes"), value: true },
+          { label: msg("fields.options.no", "No"), value: false },
         ],
       },
       showCountry: {
-        label: "Show Country",
+        label: msg("fields.showCountry", "Show Country"),
         type: "radio",
         options: [
-          { label: "Yes", value: true },
-          { label: "No", value: false },
+          { label: msg("fields.options.yes", "Yes"), value: true },
+          { label: msg("fields.options.no", "No"), value: false },
         ],
       },
     },
   },
   phone: {
-    label: "Phone",
+    label: msg("fields.phone", "Phone"),
     type: "object",
     objectFields: {
       items: {
-        label: "Items",
+        label: msg("fields.items", "Items"),
         type: "array",
         arrayFields: {
           number: {
-            label: "Number",
+            label: msg("fields.number", "Number"),
             type: "entityField",
             filter: {
               types: ["type.phone"],
             },
           },
           label: {
-            label: "Label",
+            label: msg("fields.label", "Label"),
             type: "text",
           },
         },
@@ -954,29 +960,29 @@ const footerFields: YextFields<BoutiqueShopFooterProps> = {
           "Phone",
       },
       phoneFormat: {
-        label: "Phone Format",
+        label: msg("fields.phoneFormat", "Phone Format"),
         type: "radio",
         options: [
           {
-            label: "Domestic",
+            label: msg("fields.options.domestic", "Domestic"),
             value: "domestic",
           },
           {
-            label: "International",
+            label: msg("fields.options.international", "International"),
             value: "international",
           },
         ],
       },
       includeHyperlink: {
-        label: "Include Hyperlink",
+        label: msg("fields.includeHyperlink", "Include Hyperlink"),
         type: "radio",
         options: [
           {
-            label: "Yes",
+            label: msg("fields.options.yes", "Yes"),
             value: true,
           },
           {
-            label: "No",
+            label: msg("fields.options.no", "No"),
             value: false,
           },
         ],

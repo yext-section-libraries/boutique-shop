@@ -16,6 +16,7 @@ import {
   type YextFields,
   backgroundColors,
   getDefaultRTF,
+  msg,
   resolveComponentData,
   resolveYextEntityField,
   useDocument,
@@ -39,57 +40,57 @@ type BoutiqueShopBannerProps = {
 
 const BoutiqueShopBannerFields: YextFields<BoutiqueShopBannerProps> = {
   data: {
-    label: "Banner Text",
+    label: msg("fields.bannerText", "Banner Text"),
     type: "object",
     objectFields: {
       text: {
-        label: "Text",
+        label: msg("fields.text", "Text"),
         type: "entityField",
         filter: {
           types: ["type.rich_text_v2"],
         },
       },
       styles: {
-        label: "Text Styles",
+        label: msg("fields.textStyles", "Text Styles"),
         type: "styledText",
       },
       fontColor: {
-        label: "Text Color",
+        label: msg("fields.textColor", "Text Color"),
         type: "basicSelector",
         options: "SITE_COLOR",
       },
     },
   },
   styles: {
-    label: "Styles",
+    label: msg("fields.styles", "Styles"),
     type: "object",
     objectFields: {
       textAlignment: {
-        label: "Text Alignment",
+        label: msg("fields.textAlignment", "Text Alignment"),
         type: "radio",
         options: [
-          { label: "Left", value: "left" },
-          { label: "Center", value: "center" },
-          { label: "Right", value: "right" },
+          { label: msg("fields.options.left", "Left"), value: "left" },
+          { label: msg("fields.options.center", "Center"), value: "center" },
+          { label: msg("fields.options.right", "Right"), value: "right" },
         ],
       },
     },
   },
   section: {
-    label: "Section",
+    label: msg("fields.section", "Section"),
     type: "object",
     objectFields: {
       backgroundColor: {
-        label: "Background Color",
+        label: msg("fields.backgroundColor", "Background Color"),
         type: "basicSelector",
         options: "BACKGROUND_COLOR",
       },
       visibleOnLivePage: {
-        label: "Visible on Live Page",
+        label: msg("fields.visibleOnLivePage", "Visible on Live Page"),
         type: "radio",
         options: [
-          { label: "Yes", value: true },
-          { label: "No", value: false },
+          { label: msg("fields.options.yes", "Yes"), value: true },
+          { label: msg("fields.options.no", "No"), value: false },
         ],
       },
     },

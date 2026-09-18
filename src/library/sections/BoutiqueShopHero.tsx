@@ -1,6 +1,7 @@
 import type { SectionConfig } from "@yext/visual-editor";
 
 import * as React from "react";
+import type { TFunction } from "i18next";
 import {
   AnalyticsScopeProvider,
   HoursStatus,
@@ -21,6 +22,7 @@ import {
   Image,
   MaybeRTF,
   ReviewStars,
+  msg,
   resolveComponentData,
   useDocument,
   VisibilityWrapper,
@@ -35,6 +37,7 @@ import {
   type YextFields,
 } from "@yext/visual-editor";
 import { PuckComponent } from "@puckeditor/core";
+import { useTranslation } from "react-i18next";
 import { ImageStylingFields } from "../shared/components/contentBlocks/image/styling";
 import {
   isPresetImageCta,
@@ -410,20 +413,25 @@ function getStatusDotClassName(params: StatusParams): string {
     : "boutique-hero__statusDot boutique-hero__statusDot--closed";
 }
 
-function getHeroCurrentStatusText(params: StatusParams): string {
+function getHeroCurrentStatusText(
+  params: StatusParams,
+  t: TFunction,
+): string {
   if (params.comingSoon) {
-    return "Coming Soon";
+    return t("comingSoon", "Coming Soon");
   }
 
   if (isOpen24h(params)) {
-    return "Open 24 Hours";
+    return t("open24Hours", "Open 24 Hours");
   }
 
   if (isIndefinitelyClosed(params)) {
-    return "Temporarily Closed";
+    return t("temporarilyClosed", "Temporarily Closed");
   }
 
-  return params.isOpen ? "Open Now" : "Closed";
+  return params.isOpen
+    ? t("openNow", "Open Now")
+    : t("closed", "Closed");
 }
 
 function getStatusSeparator(params: StatusParams): React.ReactNode {
@@ -435,6 +443,7 @@ function getStatusSeparator(params: StatusParams): React.ReactNode {
 }
 
 const HeroComponent: PuckComponent<BoutiqueShopHeroProps> = (props) => {
+  const { t } = useTranslation();
   const streamDocument = useDocument<StoreDocument>();
   const locale = streamDocument.locale ?? "en";
   const sectionSurfaceStyle = getSurfaceColorStyle(
@@ -488,10 +497,9 @@ const HeroComponent: PuckComponent<BoutiqueShopHeroProps> = (props) => {
           ? resolvedImage.url
           : undefined
       : undefined;
-  const ratingText =
-    ratingSummary?.averageRating && ratingSummary.reviewCount
-      ? `${ratingSummary.averageRating.toFixed(1)} stars | ${ratingSummary.reviewCount} Reviews`
-      : "";
+  const hasRatingSummary = Boolean(
+    ratingSummary?.averageRating && ratingSummary.reviewCount,
+  );
   const primaryCtaValue = directionsUrl
     ? ({
         ...props.primaryCta,
@@ -636,14 +644,24 @@ const HeroComponent: PuckComponent<BoutiqueShopHeroProps> = (props) => {
                       let futureStatusText = "";
                       if (isFuture && status.isOpen) {
                         futureStatusText = dayOfWeek
-                          ? `Closes at ${time} ${dayOfWeek}`
-                          : `Closes at ${time}`;
+                          ? t(
+                              "closesAtTimeOnDay",
+                              "Closes at {{time}} {{dayOfWeek}}",
+                              { time, dayOfWeek },
+                            )
+                          : t("closesAtTime", "Closes at {{time}}", {
+                              time,
+                            });
                       }
 
                       if (isFuture && !status.isOpen) {
                         futureStatusText = dayOfWeek
-                          ? `Opens at ${time} ${dayOfWeek}`
-                          : `Opens at ${time}`;
+                          ? t(
+                              "opensAtTimeOnDay",
+                              "Opens at {{time}} {{dayOfWeek}}",
+                              { time, dayOfWeek },
+                            )
+                          : t("opensAtTime", "Opens at {{time}}", { time });
                       }
 
                       return (
@@ -655,7 +673,7 @@ const HeroComponent: PuckComponent<BoutiqueShopHeroProps> = (props) => {
                                 className={getStatusDotClassName(status)}
                               />
                               <span className="boutique-hero__statusText">
-                                {getHeroCurrentStatusText(status)}
+                                {getHeroCurrentStatusText(status, t)}
                               </span>
                             </>
                           ) : null}
@@ -692,13 +710,19 @@ const HeroComponent: PuckComponent<BoutiqueShopHeroProps> = (props) => {
                   {resolvedName ?? ""}
                 </h1>
               </EntityField>
-              {ratingText ? (
+              {hasRatingSummary ? (
                 <div className="boutique-hero__rating">
                   <ReviewStars
                     averageRating={ratingSummary?.averageRating ?? 5}
                     color={props.reviewStarsColor}
                   />
-                  <span>{ratingText}</span>
+                  <span>
+                    {t("ratingFromReviews", {
+                      defaultValue: "{{rating}} Stars | {{count}} Reviews",
+                      rating: ratingSummary?.averageRating.toFixed(1),
+                      count: ratingSummary?.reviewCount,
+                    })}
+                  </span>
                 </div>
               ) : null}
               <div className="boutique-hero__copy">
@@ -805,70 +829,70 @@ const HeroComponent: PuckComponent<BoutiqueShopHeroProps> = (props) => {
 
 const heroFields: YextFields<BoutiqueShopHeroProps> = {
   section: {
-    label: "Section",
+    label: msg("fields.section", "Section"),
     type: "object",
     objectFields: {
       backgroundColor: {
-        label: "Background Color",
+        label: msg("fields.backgroundColor", "Background Color"),
         type: "basicSelector",
         options: "BACKGROUND_COLOR",
       },
       visibleOnLivePage: {
-        label: "Visible on Live Page",
+        label: msg("fields.visibleOnLivePage", "Visible on Live Page"),
         type: "radio",
         options: [
-          { label: "Yes", value: true },
-          { label: "No", value: false },
+          { label: msg("fields.options.yes", "Yes"), value: true },
+          { label: msg("fields.options.no", "No"), value: false },
         ],
       },
     },
   },
   statusText: {
-    label: "Status",
+    label: msg("fields.status", "Status"),
     type: "object",
     objectFields: {
       hours: {
         type: "entityField",
-        label: "Hours",
+        label: msg("fields.hours", "Hours"),
         filter: {
           types: ["type.hours"],
         },
         disableConstantValueToggle: true,
       },
       hoursStyles: {
-        label: "Hours Styles",
+        label: msg("fields.hoursStyles", "Hours Styles"),
         type: "object",
         objectFields: {
           showCurrentStatus: {
-            label: "Show Current Status",
+            label: msg("fields.showCurrentStatus", "Show Current Status"),
             type: "radio",
             options: [
-              { label: "Yes", value: true },
-              { label: "No", value: false },
+              { label: msg("fields.options.yes", "Yes"), value: true },
+              { label: msg("fields.options.no", "No"), value: false },
             ],
           },
           timeFormat: {
-            label: "Time Format",
+            label: msg("fields.timeFormat", "Time Format"),
             type: "select",
             options: [
-              { label: "12 Hour", value: "12h" },
-              { label: "24 Hour", value: "24h" },
+              { label: msg("fields.options.hour12Label", "12 Hour"), value: "12h" },
+              { label: msg("fields.options.hour24Label", "24 Hour"), value: "24h" },
             ],
           },
           dayOfWeekFormat: {
-            label: "Day Of Week Format",
+            label: msg("fields.dayOfWeekFormatLabel", "Day Of Week Format"),
             type: "select",
             options: [
-              { label: "Short", value: "short" },
-              { label: "Long", value: "long" },
+              { label: msg("fields.options.short", "Short"), value: "short" },
+              { label: msg("fields.options.long", "Long"), value: "long" },
             ],
           },
           showDayNames: {
-            label: "Show Day Names",
+            label: msg("fields.showDayNames", "Show Day Names"),
             type: "radio",
             options: [
-              { label: "Yes", value: true },
-              { label: "No", value: false },
+              { label: msg("fields.options.yes", "Yes"), value: true },
+              { label: msg("fields.options.no", "No"), value: false },
             ],
           },
         },
@@ -876,76 +900,76 @@ const heroFields: YextFields<BoutiqueShopHeroProps> = {
     },
   },
   name: {
-    label: "Name",
+    label: msg("fields.name", "Name"),
     type: "object",
     objectFields: {
       text: {
         type: "entityField",
-        label: "Text",
+        label: msg("fields.text", "Text"),
         filter: { types: ["type.string"] },
       },
       styles: {
-        label: "Text Styles",
+        label: msg("fields.textStyles", "Text Styles"),
         type: "styledText",
       },
       fontColor: {
-        label: "Font Color",
+        label: msg("fields.fontColor", "Font Color"),
         type: "basicSelector",
         options: "SITE_COLOR",
       },
     },
   },
   description: {
-    label: "Description",
+    label: msg("fields.description", "Description"),
     type: "object",
     objectFields: {
       text: {
         type: "entityField",
-        label: "Text",
+        label: msg("fields.text", "Text"),
         filter: { types: ["type.rich_text_v2"] },
       },
       fontColor: {
-        label: "Font Color",
+        label: msg("fields.fontColor", "Font Color"),
         type: "basicSelector",
         options: "SITE_COLOR",
       },
     },
   },
   reviewStarsColor: {
-    label: "Review Stars Color",
+    label: msg("fields.reviewStarsColor", "Review Stars Color"),
     type: "basicSelector",
     options: "SITE_COLOR",
   },
   primaryCta: {
-    label: "Primary CTA",
+    label: msg("fields.primaryCTA", "Primary CTA"),
     type: "custom",
     render: renderComprehensiveCtaFieldWithoutBorderRadius,
   },
   secondaryCta: {
-    label: "Secondary CTA",
+    label: msg("fields.secondaryCTA", "Secondary CTA"),
     type: "custom",
     render: renderComprehensiveCtaFieldWithoutBorderRadius,
   },
   heroImage: {
-    label: "Hero Image",
+    label: msg("fields.heroImage", "Hero Image"),
     type: "object",
     objectFields: {
       image: {
         type: "entityField",
-        label: "Image",
+        label: msg("fields.image", "Image"),
         filter: { types: ["type.image"] },
       },
       aspectRatio: ImageStylingFields.aspectRatio,
       imageConstrain: {
-        label: "Image Constrain",
+        label: msg("fields.imageConstrain", "Image Constrain"),
         type: "select",
         options: [
-          { label: "Fixed", value: "fixed" },
-          { label: "Filled", value: "filled" },
+          { label: msg("fields.options.fixed", "Fixed"), value: "fixed" },
+          { label: msg("fields.options.filled", "Filled"), value: "filled" },
         ],
       },
       styles: {
-        label: "Image Styles",
+        label: msg("fields.imageStyles", "Image Styles"),
         type: "styledImage",
       },
     },

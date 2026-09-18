@@ -1,4 +1,5 @@
 import {
+  msg,
   type ComprehensiveCTAValue,
   YextAutoField,
   type YextCustomFieldRenderProps,
@@ -94,9 +95,9 @@ function renderButtonStylesFieldWithoutBorderRadius({
         type: "object",
         label: field.label,
         objectFields: {
-          typography: { label: "Typography", type: "styledText" },
+          typography: { label: msg("fields.typography", "Typography"), type: "styledText" },
           letterSpacing: {
-            label: "Letter Spacing",
+            label: msg("fields.letterSpacing", "Letter Spacing"),
             type: "basicSelector",
             options: "LETTER_SPACING",
           },
@@ -145,34 +146,34 @@ export function renderCtaStylesFieldWithoutBorderRadius({
         objectFields: {
           variant: {
             type: "radio",
-            label: "Variant",
+            label: msg("fields.variant", "Variant"),
             options: [
-              { label: "Solid", value: "primary" },
-              { label: "Outline", value: "secondary" },
-              { label: "Link", value: "link" },
+              { label: msg("fields.options.solid", "Solid"), value: "primary" },
+              { label: msg("fields.options.outline", "Outline"), value: "secondary" },
+              { label: msg("fields.options.link", "Link"), value: "link" },
             ],
           },
           presetImage: {
             type: "basicSelector",
-            label: "Preset Image",
+            label: msg("fields.presetImage", "Preset Image"),
             options: "PRESET_IMAGE",
             visible: false,
           },
           color: {
             type: "basicSelector",
-            label: "Color",
+            label: msg("fields.color", "Color"),
             options: "SITE_COLOR",
             visible: true,
           },
           button: {
             type: "custom",
-            label: "Button Styles",
+            label: msg("fields.buttonStyles", "Button Styles"),
             visible: showButtonStyles,
             render: renderButtonStylesFieldWithoutBorderRadius,
           },
           link: {
             type: "styledLink",
-            label: "Link Styles",
+            label: msg("fields.linkStyles", "Link Styles"),
             visible: showLinkStyles,
           },
         },
@@ -233,49 +234,49 @@ export function renderComprehensiveCtaFieldWithoutBorderRadius({
         objectFields: {
           data: {
             type: "object",
-            label: "Data",
+            label: msg("fields.data", "Data"),
             objectFields: {
               actionType: {
                 type: "radio",
-                label: "Action Type",
+                label: msg("fields.actionType", "Action Type"),
                 options: [
-                  { label: "Link", value: "link" },
-                  { label: "Button", value: "button" },
+                  { label: msg("fields.options.link", "Link"), value: "link" },
+                  { label: msg("fields.options.button", "Button"), value: "button" },
                 ],
               },
               cta: {
                 type: "ctaSelector",
-                label: "CTA",
+                label: msg("fields.cta", "CTA"),
                 visible: !isButton,
               },
               openInNewTab: {
                 type: "radio",
-                label: "Open in New Tab",
+                label: msg("fields.openInNewTab", "Open in New Tab"),
                 options: [
-                  { label: "Yes", value: true },
-                  { label: "No", value: false },
+                  { label: msg("fields.options.yes", "Yes"), value: true },
+                  { label: msg("fields.options.no", "No"), value: false },
                 ],
                 visible: !isButton,
               },
               buttonText: {
                 type: "translatableString",
-                label: "Button Text",
+                label: msg("fields.buttonText", "Button Text"),
                 filter: { types: ["type.string"] },
                 visible: isButton,
               },
-              customId: { type: "text", label: "Custom Id", visible: isButton },
+              customId: { type: "text", label: msg("fields.customId", "Custom Id"), visible: isButton },
               customClass: {
                 type: "text",
-                label: "Custom Class",
+                label: msg("fields.customClass", "Custom Class"),
                 visible: isButton,
               },
               dataAttributes: {
                 type: "array",
-                label: "Data Attributes",
+                label: msg("fields.dataAttributes", "Data Attributes"),
                 defaultItemProps: { key: "", value: "" },
                 arrayFields: {
-                  key: { type: "text", label: "Key" },
-                  value: { type: "text", label: "Value" },
+                  key: { type: "text", label: msg("fields.key", "Key") },
+                  value: { type: "text", label: msg("fields.value", "Value") },
                 },
                 getItemSummary: (item: { key?: string }, index?: number) =>
                   item?.key?.trim()
@@ -285,7 +286,7 @@ export function renderComprehensiveCtaFieldWithoutBorderRadius({
               },
               ariaLabel: {
                 type: "translatableString",
-                label: "Aria Label",
+                label: msg("fields.ariaLabel", "Aria Label"),
                 filter: { types: ["type.string"] },
                 visible: isButton,
               },
@@ -293,39 +294,39 @@ export function renderComprehensiveCtaFieldWithoutBorderRadius({
           },
           styles: {
             type: "object",
-            label: "Styles",
+            label: msg("fields.styles", "Styles"),
             objectFields: {
               variant: {
                 type: "radio",
-                label: "Variant",
+                label: msg("fields.variant", "Variant"),
                 options: [
-                  { label: "Solid", value: "primary" },
-                  { label: "Outline", value: "secondary" },
-                  { label: "Link", value: "link" },
+                  { label: msg("fields.options.solid", "Solid"), value: "primary" },
+                  { label: msg("fields.options.outline", "Outline"), value: "secondary" },
+                  { label: msg("fields.options.link", "Link"), value: "link" },
                 ],
                 visible: !isPresetImage,
               },
               presetImage: {
                 type: "basicSelector",
-                label: "Preset Image",
+                label: msg("fields.presetImage", "Preset Image"),
                 options: "PRESET_IMAGE",
                 visible: isPresetImage,
               },
               color: {
                 type: "basicSelector",
-                label: "Color",
+                label: msg("fields.color", "Color"),
                 options: "SITE_COLOR",
                 visible: !isPresetImage,
               },
               button: {
                 type: "custom",
-                label: "Button Styles",
+                label: msg("fields.buttonStyles", "Button Styles"),
                 visible: showButtonStyles,
                 render: renderButtonStylesFieldWithoutBorderRadius,
               },
               link: {
                 type: "styledLink",
-                label: "Link Styles",
+                label: msg("fields.linkStyles", "Link Styles"),
                 visible: showLinkStyles,
               },
             },

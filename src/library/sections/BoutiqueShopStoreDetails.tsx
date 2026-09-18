@@ -9,6 +9,7 @@ import {
   Link,
   type AddressType,
   type DayOfWeekNames,
+  type HoursTableIntervalTranslations,
   type HoursType,
 } from "@yext/pages-components";
 import {
@@ -19,6 +20,7 @@ import {
   getAnalyticsScopeHash,
   getSurfaceColorStyle,
   getThemeColorCssValue,
+  msg,
   resolveComponentData,
   useDocument,
   type StyledTextValue,
@@ -30,6 +32,7 @@ import {
   type YextFields,
 } from "@yext/visual-editor";
 import { PuckComponent } from "@puckeditor/core";
+import { useTranslation } from "react-i18next";
 import {
   isPresetImageCta,
   renderComprehensiveCtaFieldWithoutBorderRadius,
@@ -565,6 +568,7 @@ function normalizeServicesList(value: unknown): string[] {
 const StoreDetailsComponent: PuckComponent<
   BoutiqueShopStoreDetailsProps
 > = (props) => {
+  const { t, i18n } = useTranslation();
   const streamDocument = useDocument<StoreDocument>();
   const locale = streamDocument.locale ?? "en";
   const sectionSurfaceStyle = getSurfaceColorStyle(
@@ -665,6 +669,12 @@ const StoreDetailsComponent: PuckComponent<
     locale,
     streamDocument,
   );
+  const hoursTableIntervalTranslations: HoursTableIntervalTranslations = {
+    isClosed: t("closed", "Closed"),
+    open24Hours: t("open24Hours", "Open 24 Hours"),
+    reopenDate: t("reopenDate", "Reopen Date"),
+    timeFormatLocale: i18n.language,
+  };
   const directionsCtaValue = directionsUrl
     ? ({
         ...props.directionsCta,
@@ -953,6 +963,7 @@ const StoreDetailsComponent: PuckComponent<
                           comingSoon={streamDocument.comingSoon}
                           startOfWeek={props.hoursStyles.startOfWeek}
                           collapseDays={props.hoursStyles.collapseDays}
+                          intervalTranslations={hoursTableIntervalTranslations}
                         />
                         {props.hoursStyles.showAdditionalHoursText &&
                         additionalHoursText ? (
@@ -1000,136 +1011,136 @@ const StoreDetailsComponent: PuckComponent<
 
 const detailsFields = {
   section: {
-    label: "Section",
+    label: msg("fields.section", "Section"),
     type: "object",
     objectFields: {
       backgroundColor: {
-        label: "Background Color",
+        label: msg("fields.backgroundColor", "Background Color"),
         type: "basicSelector",
         options: "BACKGROUND_COLOR",
       },
       visibleOnLivePage: {
-        label: "Visible on Live Page",
+        label: msg("fields.visibleOnLivePage", "Visible on Live Page"),
         type: "radio",
         options: [
-          { label: "Yes", value: true },
-          { label: "No", value: false },
+          { label: msg("fields.options.yes", "Yes"), value: true },
+          { label: msg("fields.options.no", "No"), value: false },
         ],
       },
     },
   },
   heading: {
-    label: "Heading",
+    label: msg("fields.heading", "Heading"),
     type: "object",
     objectFields: {
       text: {
         type: "entityField",
-        label: "Text",
+        label: msg("fields.text", "Text"),
         filter: { types: ["type.string"] },
       },
       styles: {
-        label: "Text Styles",
+        label: msg("fields.textStyles", "Text Styles"),
         type: "styledText",
       },
       fontColor: {
-        label: "Font Color",
+        label: msg("fields.fontColor", "Font Color"),
         type: "basicSelector",
         options: "SITE_COLOR",
       },
     },
   },
   websiteUrl: {
-    label: "Website CTA",
+    label: msg("fields.websiteCta", "Website CTA"),
     type: "custom",
     render: renderComprehensiveCtaFieldWithoutBorderRadius,
   },
   bodyText: {
-    label: "Body Text",
+    label: msg("fields.bodyText", "Body Text"),
     type: "object",
     objectFields: {
       styles: {
-        label: "Text Styles",
+        label: msg("fields.textStyles", "Text Styles"),
         type: "styledText",
       },
       fontColor: {
-        label: "Font Color",
+        label: msg("fields.fontColor", "Font Color"),
         type: "basicSelector",
         options: "SITE_COLOR",
       },
     },
   },
   columnHeadingStyles: {
-    label: "Column Heading Styles",
+    label: msg("fields.columnHeadingStyles", "Column Heading Styles"),
     type: "object",
     objectFields: {
       styles: {
-        label: "Text Styles",
+        label: msg("fields.textStyles", "Text Styles"),
         type: "styledText",
       },
       fontColor: {
-        label: "Font Color",
+        label: msg("fields.fontColor", "Font Color"),
         type: "basicSelector",
         options: "SITE_COLOR",
       },
     },
   },
   services: {
-    label: "Services",
+    label: msg("fields.services", "Services"),
     type: "object",
     objectFields: {
       text: {
         type: "entityField",
-        label: "Text List",
+        label: msg("fields.textList", "Text List"),
         filter: { types: ["type.string"], includeListsOnly: true },
       },
     },
   },
   address: {
-    label: "Address",
+    label: msg("fields.address", "Address"),
     type: "object",
     objectFields: {
       address: {
         type: "entityField",
-        label: "Address",
+        label: msg("fields.address", "Address"),
         filter: {
           types: ["type.address"],
         },
       },
       showRegion: {
-        label: "Show Region",
+        label: msg("fields.showRegion", "Show Region"),
         type: "radio",
         options: [
-          { label: "Yes", value: true },
-          { label: "No", value: false },
+          { label: msg("fields.options.yes", "Yes"), value: true },
+          { label: msg("fields.options.no", "No"), value: false },
         ],
       },
       showCountry: {
-        label: "Show Country",
+        label: msg("fields.showCountry", "Show Country"),
         type: "radio",
         options: [
-          { label: "Yes", value: true },
-          { label: "No", value: false },
+          { label: msg("fields.options.yes", "Yes"), value: true },
+          { label: msg("fields.options.no", "No"), value: false },
         ],
       },
     },
   },
   mainPhone: {
-    label: "Main Phone",
+    label: msg("fields.mainPhone", "Main Phone"),
     type: "object",
     objectFields: {
       items: {
-        label: "Items",
+        label: msg("fields.items", "Items"),
         type: "array",
         arrayFields: {
           number: {
             type: "entityField",
-            label: "Number",
+            label: msg("fields.number", "Number"),
             filter: {
               types: ["type.phone"],
             },
           },
           label: {
-            label: "Label",
+            label: msg("fields.label", "Label"),
             type: "text",
           },
         },
@@ -1148,151 +1159,151 @@ const detailsFields = {
           "Phone",
       },
       phoneFormat: {
-        label: "Phone Format",
+        label: msg("fields.phoneFormat", "Phone Format"),
         type: "radio",
         options: [
-          { label: "Domestic", value: "domestic" },
-          { label: "International", value: "international" },
+          { label: msg("fields.options.domestic", "Domestic"), value: "domestic" },
+          { label: msg("fields.options.international", "International"), value: "international" },
         ],
       },
       includeHyperlink: {
-        label: "Include Hyperlink",
+        label: msg("fields.includeHyperlink", "Include Hyperlink"),
         type: "radio",
         options: [
-          { label: "Yes", value: true },
-          { label: "No", value: false },
+          { label: msg("fields.options.yes", "Yes"), value: true },
+          { label: msg("fields.options.no", "No"), value: false },
         ],
       },
     },
   },
   hours: {
     type: "entityField",
-    label: "Hours",
+    label: msg("fields.hours", "Hours"),
     filter: {
       types: ["type.hours"],
     },
     disableConstantValueToggle: true,
   },
   hoursStyles: {
-    label: "Hours Styles",
+    label: msg("fields.hoursStyles", "Hours Styles"),
     type: "object",
     objectFields: {
       startOfWeek: {
-        label: "Start Of Week",
+        label: msg("fields.startOfWeek", "Start Of Week"),
         type: "select",
         options: [
-          { label: "Monday", value: "monday" },
-          { label: "Tuesday", value: "tuesday" },
-          { label: "Wednesday", value: "wednesday" },
-          { label: "Thursday", value: "thursday" },
-          { label: "Friday", value: "friday" },
-          { label: "Saturday", value: "saturday" },
-          { label: "Sunday", value: "sunday" },
-          { label: "Today", value: "today" },
+          { label: msg("fields.options.monday", "Monday"), value: "monday" },
+          { label: msg("fields.options.tuesday", "Tuesday"), value: "tuesday" },
+          { label: msg("fields.options.wednesday", "Wednesday"), value: "wednesday" },
+          { label: msg("fields.options.thursday", "Thursday"), value: "thursday" },
+          { label: msg("fields.options.friday", "Friday"), value: "friday" },
+          { label: msg("fields.options.saturday", "Saturday"), value: "saturday" },
+          { label: msg("fields.options.sunday", "Sunday"), value: "sunday" },
+          { label: msg("fields.options.today", "Today"), value: "today" },
         ],
       },
       collapseDays: {
-        label: "Collapse Days",
+        label: msg("fields.collapseDays", "Collapse Days"),
         type: "radio",
         options: [
-          { label: "Yes", value: true },
-          { label: "No", value: false },
+          { label: msg("fields.options.yes", "Yes"), value: true },
+          { label: msg("fields.options.no", "No"), value: false },
         ],
       },
       showAdditionalHoursText: {
-        label: "Show Additional Hours Text",
+        label: msg("fields.showAdditionalHoursText", "Show Additional Hours Text"),
         type: "radio",
         options: [
-          { label: "Yes", value: true },
-          { label: "No", value: false },
+          { label: msg("fields.options.yes", "Yes"), value: true },
+          { label: msg("fields.options.no", "No"), value: false },
         ],
       },
       alignment: {
-        label: "Alignment",
+        label: msg("fields.alignment", "Alignment"),
         type: "select",
         options: [
-          { label: "Start", value: "items-start" },
-          { label: "Center", value: "items-center" },
-          { label: "End", value: "items-end" },
+          { label: msg("fields.options.start", "Start"), value: "items-start" },
+          { label: msg("fields.options.center", "Center"), value: "items-center" },
+          { label: msg("fields.options.end", "End"), value: "items-end" },
         ],
       },
     },
   },
   locationInformationHeading: {
-    label: "Location Information Heading",
+    label: msg("fields.locationInformationHeading", "Location Information Heading"),
     type: "object",
     objectFields: {
       text: {
         type: "entityField",
-        label: "Text",
+        label: msg("fields.text", "Text"),
         filter: { types: ["type.string"] },
       },
     },
   },
   addressLabel: {
-    label: "Address Label",
+    label: msg("fields.addressLabel", "Address Label"),
     type: "object",
     objectFields: {
       text: {
         type: "entityField",
-        label: "Text",
+        label: msg("fields.text", "Text"),
         filter: { types: ["type.string"] },
       },
       styles: {
-        label: "Text Styles",
+        label: msg("fields.textStyles", "Text Styles"),
         type: "styledText",
       },
       fontColor: {
-        label: "Font Color",
+        label: msg("fields.fontColor", "Font Color"),
         type: "basicSelector",
         options: "SITE_COLOR",
       },
     },
   },
   mainPhoneLabel: {
-    label: "Main Phone Label",
+    label: msg("fields.mainPhoneLabel", "Main Phone Label"),
     type: "object",
     objectFields: {
       text: {
         type: "entityField",
-        label: "Text",
+        label: msg("fields.text", "Text"),
         filter: { types: ["type.string"] },
       },
       styles: {
-        label: "Text Styles",
+        label: msg("fields.textStyles", "Text Styles"),
         type: "styledText",
       },
       fontColor: {
-        label: "Font Color",
+        label: msg("fields.fontColor", "Font Color"),
         type: "basicSelector",
         options: "SITE_COLOR",
       },
     },
   },
   storeHoursHeading: {
-    label: "Store Hours Heading",
+    label: msg("fields.storeHoursHeading", "Store Hours Heading"),
     type: "object",
     objectFields: {
       text: {
         type: "entityField",
-        label: "Text",
+        label: msg("fields.text", "Text"),
         filter: { types: ["type.string"] },
       },
     },
   },
   servicesHeading: {
-    label: "Services Heading",
+    label: msg("fields.servicesHeading", "Services Heading"),
     type: "object",
     objectFields: {
       text: {
         type: "entityField",
-        label: "Text",
+        label: msg("fields.text", "Text"),
         filter: { types: ["type.string"] },
       },
     },
   },
   directionsCta: {
-    label: "Directions CTA",
+    label: msg("fields.directionsCta", "Directions CTA"),
     type: "custom",
     render: renderComprehensiveCtaFieldWithoutBorderRadius,
   },
