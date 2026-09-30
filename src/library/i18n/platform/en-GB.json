@@ -22,12 +22,14 @@
     "locator": "Locator",
     "phone": "Phone"
   },
+  "currentLocation": "Current Location",
   "customer": "Customer",
   "customSearchArea": "Custom Search Area",
   "distance": "Distance",
   "distanceLineFromSearch": "<strong>{{distance}}</strong> from search",
   "distanceLineFromSearchLocation": "<strong>{{distance}}</strong> from {{searchLocation}}",
   "distanceLineFromYou": "<strong>{{distance}}</strong> from you",
+  "email": "Email",
   "enableCookies": "Enable Cookies",
   "fields": {
     "aboutImage": "About Image",
