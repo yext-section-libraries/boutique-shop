@@ -24,8 +24,14 @@ import {
   ReviewStars,
   msg,
   resolveComponentData,
+  resolveYextEntityField,
   useDocument,
   VisibilityWrapper,
+<<<<<<< Updated upstream
+=======
+  YextAutoField,
+  type RichText,
+>>>>>>> Stashed changes
   type StyledImageValue,
   type StyledTextValue,
   type ThemeColor,
@@ -73,6 +79,7 @@ type HoursStatusProps = {
 
 type StyledRtfProps = {
   text: YextEntityField<TranslatableRichText>;
+  styles?: StyledTextValue;
   fontColor?: string | ThemeColor;
 };
 
@@ -221,6 +228,31 @@ const HERO_STYLES = `
 .boutique-hero__copy,
 .boutique-hero__title {
   margin: 0;
+}
+
+/* Selected text styles must override inline styles in the rich text. */
+.boutique-hero__copy .rtf-wrapper[style*="font-family:"] * {
+  font-family: inherit !important;
+}
+
+.boutique-hero__copy .rtf-wrapper[style*="font-size:"] * {
+  font-size: inherit !important;
+}
+
+.boutique-hero__copy .rtf-wrapper[style*="font-weight:"] * {
+  font-weight: inherit !important;
+}
+
+.boutique-hero__copy .rtf-wrapper[style*="font-style:"] * {
+  font-style: inherit !important;
+}
+
+.boutique-hero__copy .rtf-wrapper[style*="text-transform:"] * {
+  text-transform: inherit !important;
+}
+
+.boutique-hero__copy .rtf-wrapper[style*="color:"] * {
+  color: inherit !important;
 }
 
 .boutique-hero__statusChip {
@@ -461,12 +493,15 @@ const HeroComponent: PuckComponent<BoutiqueShopHeroProps> = (props) => {
   ) as HoursType | undefined;
   const resolvedName = resolveComponentData(props.name.text, locale, streamDocument);
   const descriptionColor = getThemeColorCssValue(props.description.fontColor);
-  const descriptionRichTextStyleOverrides = descriptionColor
-    ? { color: descriptionColor }
-    : undefined;
-  const resolvedDescription = resolveComponentData(
+  const descriptionRichTextStyleOverrides = {
+    ...props.description.styles,
+    ...(descriptionColor ? { color: descriptionColor } : {}),
+  };
+  const resolvedDescription = resolveYextEntityField(
+    streamDocument,
     props.description.text,
     locale,
+<<<<<<< Updated upstream
     streamDocument,
   );
   const descriptionContent = React.isValidElement(resolvedDescription) ? (
@@ -476,6 +511,8 @@ const HeroComponent: PuckComponent<BoutiqueShopHeroProps> = (props) => {
       data={resolvedDescription as string | undefined}
       richTextStyleOverrides={descriptionRichTextStyleOverrides}
     />
+=======
+>>>>>>> Stashed changes
   );
   const resolvedImage = resolveComponentData(
     props.heroImage?.image,
@@ -592,10 +629,15 @@ const HeroComponent: PuckComponent<BoutiqueShopHeroProps> = (props) => {
         liveVisibility={props.section.visibleOnLivePage}
         isEditing={props.puck.isEditing}
       >
+<<<<<<< Updated upstream
         <Background
           as="section"
           background={props.section.backgroundColor}
           className="boutique-hero"
+=======
+        <section
+          className="boutique-hero components"
+>>>>>>> Stashed changes
           style={sectionSurfaceStyle}
         >
           <style>{HERO_STYLES}</style>
@@ -700,7 +742,9 @@ const HeroComponent: PuckComponent<BoutiqueShopHeroProps> = (props) => {
                   className="boutique-hero__title"
                   style={{
                     ...resolveExplicitColor(props.name.fontColor),
-                    fontFamily: props.name.styles.fontFamily,
+                    fontFamily: props.name.styles.fontFamily === "default"
+                      ? undefined
+                      : props.name.styles.fontFamily,
                     fontSize: props.name.styles.fontSize,
                     fontStyle: props.name.styles.fontStyle,
                     fontWeight: props.name.styles.fontWeight,
@@ -731,7 +775,17 @@ const HeroComponent: PuckComponent<BoutiqueShopHeroProps> = (props) => {
                   fieldId={props.description.text.field}
                   constantValueEnabled={props.description.text.constantValueEnabled}
                 >
-                  {descriptionContent}
+                  <MaybeRTF
+                    data={
+                      resolvedDescription &&
+                      typeof resolvedDescription === "object" &&
+                      ("hasLocalizedValue" in resolvedDescription ||
+                        "defaultValue" in resolvedDescription)
+                        ? resolvedDescription[locale] ?? resolvedDescription.defaultValue
+                        : resolvedDescription as string | RichText | undefined
+                    }
+                    richTextStyleOverrides={descriptionRichTextStyleOverrides}
+                  />
                 </EntityField>
               </div>
               <div className="boutique-hero__buttons">
@@ -928,6 +982,10 @@ const heroFields: YextFields<BoutiqueShopHeroProps> = {
         label: msg("fields.text", "Text"),
         filter: { types: ["type.rich_text_v2"] },
       },
+      styles: {
+        label: "Text Styles",
+        type: "styledText",
+      },
       fontColor: {
         label: msg("fields.fontColor", "Font Color"),
         type: "basicSelector",
@@ -988,6 +1046,13 @@ const makeRtfDefault = (
     },
     constantValueEnabled: true,
   },
+  styles: {
+    fontFamily: "default",
+    fontSize: "default",
+    fontWeight: "default",
+    fontStyle: "default",
+    textTransform: "default",
+  },
   ...(fontColor ? { fontColor } : {}),
 });
 
@@ -1025,7 +1090,7 @@ export const BoutiqueShopHero: YextComponentConfig<BoutiqueShopHeroProps> =
           constantValueEnabled: false,
         },
         styles: {
-          fontFamily: "inherit",
+          fontFamily: "default",
           fontSize: "56px",
           fontWeight: "700",
           fontStyle: "normal",

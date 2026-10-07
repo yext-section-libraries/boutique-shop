@@ -508,10 +508,15 @@ const FeaturedPromoComponent: PuckComponent<
         liveVisibility={props.section.visibleOnLivePage}
         isEditing={props.puck.isEditing}
       >
+<<<<<<< Updated upstream
         <Background
           as="section"
           background={props.section.backgroundColor}
           className="boutique-featured-promo"
+=======
+        <section
+          className="boutique-featured-promo components"
+>>>>>>> Stashed changes
           style={sectionSurfaceStyle}
         >
           <style>{PROMO_STYLES}</style>

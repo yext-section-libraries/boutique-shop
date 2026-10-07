@@ -591,10 +591,15 @@ const FooterComponent: PuckComponent<BoutiqueShopFooterProps> = (props) => {
         liveVisibility={props.section.visibleOnLivePage}
         isEditing={props.puck.isEditing}
       >
+<<<<<<< Updated upstream
         <Background
           as="footer"
           background={props.section.backgroundColor}
           className="boutique-footer"
+=======
+        <footer
+          className="boutique-footer components"
+>>>>>>> Stashed changes
           style={getSurfaceColorStyle(
             props.section.backgroundColor,
             streamDocument,

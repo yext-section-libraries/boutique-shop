@@ -614,12 +614,16 @@ const NearbyComponent: PuckComponent<BoutiqueShopNearbyProps> = (props) => {
     <AnalyticsScopeProvider
       name={`BoutiqueShopNearby${getAnalyticsScopeHash(props.id ?? "nearby")}`}
     >
+<<<<<<< Updated upstream
       <Background
         as="section"
         background={props.section.backgroundColor}
         className="boutique-nearby"
         style={sectionSurfaceStyle}
       >
+=======
+      <section className="boutique-nearby components" style={sectionSurfaceStyle}>
+>>>>>>> Stashed changes
         <style>{NEARBY_STYLES}</style>
         <div className="boutique-nearby__shell">
           <EntityField
