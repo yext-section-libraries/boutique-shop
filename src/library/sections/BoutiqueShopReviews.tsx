@@ -421,15 +421,10 @@ const ReviewsComponent: PuckComponent<BoutiqueShopReviewsProps> = (
         liveVisibility={props.section.visibleOnLivePage}
         isEditing={props.puck.isEditing}
       >
-<<<<<<< Updated upstream
         <Background
           as="section"
           background={props.section.backgroundColor}
           className="boutique-reviews"
-=======
-        <section
-          className="boutique-reviews components"
->>>>>>> Stashed changes
           style={getSurfaceColorStyle(props.section.backgroundColor, streamDocument)}
         >
           <style>{REVIEW_STYLES}</style>

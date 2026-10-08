@@ -27,11 +27,7 @@ import {
   resolveYextEntityField,
   useDocument,
   VisibilityWrapper,
-<<<<<<< Updated upstream
-=======
-  YextAutoField,
   type RichText,
->>>>>>> Stashed changes
   type StyledImageValue,
   type StyledTextValue,
   type ThemeColor,
@@ -501,18 +497,6 @@ const HeroComponent: PuckComponent<BoutiqueShopHeroProps> = (props) => {
     streamDocument,
     props.description.text,
     locale,
-<<<<<<< Updated upstream
-    streamDocument,
-  );
-  const descriptionContent = React.isValidElement(resolvedDescription) ? (
-    resolvedDescription
-  ) : (
-    <MaybeRTF
-      data={resolvedDescription as string | undefined}
-      richTextStyleOverrides={descriptionRichTextStyleOverrides}
-    />
-=======
->>>>>>> Stashed changes
   );
   const resolvedImage = resolveComponentData(
     props.heroImage?.image,
@@ -629,15 +613,10 @@ const HeroComponent: PuckComponent<BoutiqueShopHeroProps> = (props) => {
         liveVisibility={props.section.visibleOnLivePage}
         isEditing={props.puck.isEditing}
       >
-<<<<<<< Updated upstream
         <Background
           as="section"
           background={props.section.backgroundColor}
           className="boutique-hero"
-=======
-        <section
-          className="boutique-hero components"
->>>>>>> Stashed changes
           style={sectionSurfaceStyle}
         >
           <style>{HERO_STYLES}</style>

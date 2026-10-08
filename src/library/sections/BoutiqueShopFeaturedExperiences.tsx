@@ -626,16 +626,12 @@ const FeaturedExperiencesComponent: PuckComponent<
         liveVisibility={props.section.visibleOnLivePage}
         isEditing={props.puck.isEditing}
       >
-<<<<<<< Updated upstream
         <Background
           as="section"
           background={props.section.backgroundColor}
           className="boutique-featured"
           style={sectionSurfaceStyle}
         >
-=======
-        <section className="boutique-featured components" style={sectionSurfaceStyle}>
->>>>>>> Stashed changes
           <style>{FEATURE_STYLES}</style>
           <div className="boutique-featured__shell">
             <EntityField

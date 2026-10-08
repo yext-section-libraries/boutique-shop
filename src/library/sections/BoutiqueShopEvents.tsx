@@ -17,12 +17,7 @@ import {
   resolveYextEntityField,
   useDocument,
   VisibilityWrapper,
-<<<<<<< Updated upstream
-=======
-  YextAutoField,
-  type RichText,
   type StreamDocument,
->>>>>>> Stashed changes
   type StyledImageValue,
   type StyledTextValue,
   type ThemeColor,
@@ -342,16 +337,6 @@ const EVENT_STYLES = `
 }
 `;
 
-<<<<<<< Updated upstream
-=======
-function resolveExplicitColor(
-  fontColor: string | ThemeColor | undefined,
-): React.CSSProperties | undefined {
-  const color = getThemeColorCssValue(fontColor);
-  return color ? { color } : undefined;
-}
->>>>>>> Stashed changes
-
 const EventsComponent: PuckComponent<BoutiqueShopEventsProps> = (props) => {
   const streamDocument = useDocument<StreamDocument>();
   const locale = streamDocument.locale ?? "en";
@@ -448,16 +433,12 @@ const EventsComponent: PuckComponent<BoutiqueShopEventsProps> = (props) => {
         liveVisibility={props.section.visibleOnLivePage}
         isEditing={props.puck.isEditing}
       >
-<<<<<<< Updated upstream
         <Background
           as="section"
           background={props.section.backgroundColor}
           className="boutique-events"
           style={sectionSurfaceStyle}
         >
-=======
-        <section className="boutique-events components" style={sectionSurfaceStyle}>
->>>>>>> Stashed changes
           <style>{EVENT_STYLES}</style>
           <div className="boutique-events__shell">
             <EntityField
@@ -514,26 +495,19 @@ const EventsComponent: PuckComponent<BoutiqueShopEventsProps> = (props) => {
                 fieldId={props.body.text.field}
                 constantValueEnabled={props.body.text.constantValueEnabled}
               >
-<<<<<<< Updated upstream
-                <div style={resolveExplicitColor(props.body.fontColor)}>
-                  {renderRichText(resolvedBody)}
-=======
                 <div className="boutique-events__copy">
-                  <MaybeRTF
-                    data={
-                      resolvedBody &&
+                  {renderRichText(
+                    resolvedBody &&
                       typeof resolvedBody === "object" &&
                       ("hasLocalizedValue" in resolvedBody ||
                         "defaultValue" in resolvedBody)
-                        ? resolvedBody[locale] ?? resolvedBody.defaultValue
-                        : resolvedBody as string | RichText | undefined
-                    }
-                    richTextStyleOverrides={{
+                      ? resolvedBody[locale] ?? resolvedBody.defaultValue
+                      : resolvedBody,
+                    {
                       ...props.body.styles,
                       color: getThemeColorCssValue(props.body.fontColor),
-                    }}
-                  />
->>>>>>> Stashed changes
+                    },
+                  )}
                 </div>
               </EntityField>
               <EntityField

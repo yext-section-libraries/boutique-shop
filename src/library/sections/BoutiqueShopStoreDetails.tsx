@@ -751,16 +751,12 @@ const StoreDetailsComponent: PuckComponent<
         liveVisibility={props.section.visibleOnLivePage}
         isEditing={props.puck.isEditing}
       >
-<<<<<<< Updated upstream
         <Background
           as="section"
           background={props.section.backgroundColor}
           className="boutique-details"
           style={sectionSurfaceStyle}
         >
-=======
-        <section className="boutique-details components" style={sectionSurfaceStyle}>
->>>>>>> Stashed changes
           <style>{DETAILS_STYLES}</style>
           <div className="boutique-details__shell">
             <EntityField

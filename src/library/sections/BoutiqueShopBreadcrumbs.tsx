@@ -175,15 +175,10 @@ const BreadcrumbsComponent: PuckComponent<BoutiqueShopBreadcrumbsProps> = (
         liveVisibility={props.section.visibleOnLivePage}
         isEditing={props.puck.isEditing}
       >
-<<<<<<< Updated upstream
         <Background
           as="section"
           background={props.section.backgroundColor}
           className="boutique-breadcrumbs"
-=======
-        <section
-          className="boutique-breadcrumbs components"
->>>>>>> Stashed changes
           style={getSurfaceColorStyle(
             props.section.backgroundColor,
             streamDocument,

@@ -8,13 +8,13 @@ import {
   getAnalyticsScopeHash,
   getDefaultRTF,
   getSurfaceColorStyle,
+  getThemeColorCssValue,
   Image,
   msg,
   resolveComponentData,
   resolveYextEntityField,
   useDocument,
   VisibilityWrapper,
-  type RichText,
   type StreamDocument,
   type StyledImageValue,
   type StyledTextValue,
@@ -240,16 +240,6 @@ const ABOUT_STYLES = `
 }
 `;
 
-<<<<<<< Updated upstream
-=======
-function resolveExplicitColor(
-  fontColor: string | ThemeColor | undefined,
-): React.CSSProperties | undefined {
-  const color = getThemeColorCssValue(fontColor);
-  return color ? { color } : undefined;
-}
->>>>>>> Stashed changes
-
 const AboutComponent: PuckComponent<BoutiqueShopAboutProps> = (props) => {
   const streamDocument = useDocument<StreamDocument>();
   const locale = streamDocument.locale ?? "en";
@@ -327,15 +317,10 @@ const AboutComponent: PuckComponent<BoutiqueShopAboutProps> = (props) => {
         liveVisibility={props.section.visibleOnLivePage}
         isEditing={props.puck.isEditing}
       >
-<<<<<<< Updated upstream
         <Background
           as="section"
           background={props.section.backgroundColor}
           className="boutique-about"
-=======
-        <section
-          className="boutique-about components"
->>>>>>> Stashed changes
           style={getSurfaceColorStyle(
             props.section.backgroundColor,
             streamDocument,
@@ -373,29 +358,19 @@ const AboutComponent: PuckComponent<BoutiqueShopAboutProps> = (props) => {
                 fieldId={props.body.text.field}
                 constantValueEnabled={props.body.text.constantValueEnabled}
               >
-<<<<<<< Updated upstream
-                <div
-                  className="boutique-about__copy"
-                  style={resolveExplicitColor(props.body.fontColor)}
-                >
-                  {renderRichText(resolvedBody)}
-=======
                 <div className="boutique-about__copy">
-                  <MaybeRTF
-                    data={
-                      resolvedBody &&
+                  {renderRichText(
+                    resolvedBody &&
                       typeof resolvedBody === "object" &&
                       ("hasLocalizedValue" in resolvedBody ||
                         "defaultValue" in resolvedBody)
-                        ? resolvedBody[locale] ?? resolvedBody.defaultValue
-                        : resolvedBody as string | RichText | undefined
-                    }
-                    richTextStyleOverrides={{
+                      ? resolvedBody[locale] ?? resolvedBody.defaultValue
+                      : resolvedBody,
+                    {
                       ...props.body.styles,
                       color: getThemeColorCssValue(props.body.fontColor),
-                    }}
-                  />
->>>>>>> Stashed changes
+                    },
+                  )}
                 </div>
               </EntityField>
             </article>

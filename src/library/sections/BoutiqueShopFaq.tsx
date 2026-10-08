@@ -330,15 +330,10 @@ const FaqComponent: PuckComponent<BoutiqueShopFaqProps> = (props) => {
         liveVisibility={props.section.visibleOnLivePage}
         isEditing={props.puck.isEditing}
       >
-<<<<<<< Updated upstream
         <Background
           as="section"
           background={props.section.backgroundColor}
           className="boutique-faq"
-=======
-        <section
-          className="boutique-faq components"
->>>>>>> Stashed changes
           style={getSurfaceColorStyle(
             props.section.backgroundColor,
             streamDocument,
