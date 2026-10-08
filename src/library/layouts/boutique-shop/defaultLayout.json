@@ -301,7 +301,7 @@
                 "styles": {
                   "fontSize": "56px",
                   "fontStyle": "normal",
-                  "fontFamily": "inherit",
+                  "fontFamily": "default",
                   "fontWeight": "700",
                   "textTransform": "none"
                 }
@@ -371,6 +371,13 @@
                 }
               },
               "description": {
+                "styles": {
+                  "fontFamily": "default",
+                  "fontSize": "default",
+                  "fontWeight": "default",
+                  "fontStyle": "default",
+                  "textTransform": "default"
+                },
                 "text": {
                   "field": "",
                   "constantValue": {
@@ -934,6 +941,13 @@
                 }
               },
               "body": {
+                "styles": {
+                  "fontFamily": "default",
+                  "fontSize": "default",
+                  "fontWeight": "default",
+                  "fontStyle": "default",
+                  "textTransform": "default"
+                },
                 "text": {
                   "field": "",
                   "constantValue": {
@@ -1144,6 +1158,13 @@
             "props": {
               "id": "BoutiqueShopAbout-ef599982-c5f8-438e-9b9f-56f8e5162334",
               "body": {
+                "styles": {
+                  "fontFamily": "default",
+                  "fontSize": "default",
+                  "fontWeight": "default",
+                  "fontStyle": "default",
+                  "textTransform": "default"
+                },
                 "text": {
                   "field": "",
                   "constantValue": {
@@ -1297,6 +1318,13 @@
                 }
               },
               "body": {
+                "styles": {
+                  "fontFamily": "default",
+                  "fontSize": "default",
+                  "fontWeight": "default",
+                  "fontStyle": "default",
+                  "textTransform": "default"
+                },
                 "text": {
                   "field": "",
                   "constantValue": {

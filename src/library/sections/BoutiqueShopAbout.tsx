@@ -8,11 +8,14 @@ import {
   getAnalyticsScopeHash,
   getDefaultRTF,
   getSurfaceColorStyle,
+  getThemeColorCssValue,
   Image,
   msg,
   resolveComponentData,
+  resolveYextEntityField,
   useDocument,
   VisibilityWrapper,
+  type StreamDocument,
   type StyledImageValue,
   type StyledTextValue,
   type ThemeColor,
@@ -40,6 +43,7 @@ type StyledTextProps = {
 
 type StyledRtfProps = {
   text: YextEntityField<TranslatableRichText>;
+  styles?: StyledTextValue;
   fontColor?: string | ThemeColor;
 };
 
@@ -73,6 +77,31 @@ const DEFAULT_ABOUT_IMAGE = {
 const ABOUT_STYLES = `
 .boutique-about {
   padding: 72px 0;
+}
+
+/* Selected text styles must override inline styles in the rich text. */
+.boutique-about__copy .rtf-wrapper[style*="font-family:"] * {
+  font-family: inherit !important;
+}
+
+.boutique-about__copy .rtf-wrapper[style*="font-size:"] * {
+  font-size: inherit !important;
+}
+
+.boutique-about__copy .rtf-wrapper[style*="font-weight:"] * {
+  font-weight: inherit !important;
+}
+
+.boutique-about__copy .rtf-wrapper[style*="font-style:"] * {
+  font-style: inherit !important;
+}
+
+.boutique-about__copy .rtf-wrapper[style*="text-transform:"] * {
+  text-transform: inherit !important;
+}
+
+.boutique-about__copy .rtf-wrapper[style*="color:"] * {
+  color: inherit !important;
 }
 
 .boutique-about p {
@@ -211,9 +240,8 @@ const ABOUT_STYLES = `
 }
 `;
 
-
 const AboutComponent: PuckComponent<BoutiqueShopAboutProps> = (props) => {
-  const streamDocument = useDocument();
+  const streamDocument = useDocument<StreamDocument>();
   const locale = streamDocument.locale ?? "en";
 
   const resolvedHeadingText =
@@ -275,10 +303,10 @@ const AboutComponent: PuckComponent<BoutiqueShopAboutProps> = (props) => {
     objectFit:
       props.aboutImage.imageConstrain === "filled" ? "cover" : "contain",
   };
-  const resolvedBody = resolveComponentData(
+  const resolvedBody = resolveYextEntityField(
+    streamDocument,
     props.body.text,
     locale,
-    streamDocument,
   );
 
   return (
@@ -330,11 +358,19 @@ const AboutComponent: PuckComponent<BoutiqueShopAboutProps> = (props) => {
                 fieldId={props.body.text.field}
                 constantValueEnabled={props.body.text.constantValueEnabled}
               >
-                <div
-                  className="boutique-about__copy"
-                  style={resolveExplicitColor(props.body.fontColor)}
-                >
-                  {renderRichText(resolvedBody)}
+                <div className="boutique-about__copy">
+                  {renderRichText(
+                    resolvedBody &&
+                      typeof resolvedBody === "object" &&
+                      ("hasLocalizedValue" in resolvedBody ||
+                        "defaultValue" in resolvedBody)
+                      ? resolvedBody[locale] ?? resolvedBody.defaultValue
+                      : resolvedBody,
+                    {
+                      ...props.body.styles,
+                      color: getThemeColorCssValue(props.body.fontColor),
+                    },
+                  )}
                 </div>
               </EntityField>
             </article>
@@ -418,6 +454,10 @@ const aboutFields: YextFields<BoutiqueShopAboutProps> = {
         label: msg("fields.text", "Text"),
         filter: { types: ["type.rich_text_v2"] },
       },
+      styles: {
+        label: "Text Styles",
+        type: "styledText",
+      },
       fontColor: {
         label: msg("fields.fontColor", "Font Color"),
         type: "basicSelector",
@@ -482,6 +522,13 @@ export const BoutiqueShopAbout: YextComponentConfig<BoutiqueShopAboutProps> =
       },
       cardBackgroundColor: defaultAboutCardBackgroundColor,
       body: {
+        styles: {
+          fontFamily: "default",
+          fontSize: "default",
+          fontWeight: "default",
+          fontStyle: "default",
+          textTransform: "default",
+        },
         text: {
           field: "",
           constantValue: {
