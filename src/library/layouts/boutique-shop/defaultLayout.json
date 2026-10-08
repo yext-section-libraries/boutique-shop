@@ -941,6 +941,13 @@
                 }
               },
               "body": {
+                "styles": {
+                  "fontFamily": "default",
+                  "fontSize": "default",
+                  "fontWeight": "default",
+                  "fontStyle": "default",
+                  "textTransform": "default"
+                },
                 "text": {
                   "field": "",
                   "constantValue": {

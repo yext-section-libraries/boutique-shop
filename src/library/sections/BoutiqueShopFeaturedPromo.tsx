@@ -1,6 +1,6 @@
 import type { SectionConfig } from "@yext/visual-editor";
 
-import * as React from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { AnalyticsScopeProvider } from "@yext/pages-components";
 import {
   Background,
@@ -14,8 +14,10 @@ import {
   Image,
   msg,
   resolveComponentData,
+  resolveYextEntityField,
   useDocument,
   VisibilityWrapper,
+  type StreamDocument,
   type StyledImageValue,
   type StyledTextValue,
   type ThemeColor,
@@ -47,6 +49,7 @@ type StyledTextProps = {
 
 type StyledRtfProps = {
   text: YextEntityField<TranslatableRichText>;
+  styles?: StyledTextValue;
   fontColor?: string | ThemeColor;
 };
 
@@ -81,6 +84,31 @@ const DEFAULT_PROMO_IMAGE = {
 const PROMO_STYLES = `
 .boutique-featured-promo {
   padding: 72px 0 96px;
+}
+
+/* Selected text styles must override inline styles in the rich text. */
+.boutique-featured-promo__copy .rtf-wrapper[style*="font-family:"] * {
+  font-family: inherit !important;
+}
+
+.boutique-featured-promo__copy .rtf-wrapper[style*="font-size:"] * {
+  font-size: inherit !important;
+}
+
+.boutique-featured-promo__copy .rtf-wrapper[style*="font-weight:"] * {
+  font-weight: inherit !important;
+}
+
+.boutique-featured-promo__copy .rtf-wrapper[style*="font-style:"] * {
+  font-style: inherit !important;
+}
+
+.boutique-featured-promo__copy .rtf-wrapper[style*="text-transform:"] * {
+  text-transform: inherit !important;
+}
+
+.boutique-featured-promo__copy .rtf-wrapper[style*="color:"] * {
+  color: inherit !important;
 }
 
 .boutique-featured-promo p {
@@ -333,7 +361,7 @@ function getCtaColorStyle(
   cta: CtaColorSource,
   ctaVariant: "primary" | "secondary" | "link",
   sectionForeground: string,
-): React.CSSProperties {
+): CSSProperties {
   const explicitColor = getThemeColorCssValue(cta.styles?.color);
   const selectedColor =
     explicitColor ?? (ctaVariant === "primary" ? "#262b2c" : sectionForeground);
@@ -343,15 +371,15 @@ function getCtaColorStyle(
   return {
     "--button-bg": selectedColor,
     "--button-text": contrastingColor,
-  } as React.CSSProperties;
+  } as CSSProperties;
 }
 
 
 function renderImage(
   image: PromoImageProps,
   locale: string,
-  streamDocument: Record<string, unknown>,
-) {
+  streamDocument: StreamDocument,
+): ReactNode {
   const resolvedImage = resolveComponentData(
     image?.image,
     locale,
@@ -375,14 +403,14 @@ function renderImage(
 
   const imageAspectRatio =
     image.aspectRatio > 0 ? image.aspectRatio : undefined;
-  const imageFrameStyle: React.CSSProperties = {
+  const imageFrameStyle: CSSProperties = {
     alignItems: "center",
     display: "flex",
     height: "500px",
     justifyContent: "center",
     width: "100%",
   };
-  const imageWrapperStyle: React.CSSProperties = {
+  const imageWrapperStyle: CSSProperties = {
     aspectRatio: imageAspectRatio,
     borderRadius:
       image.styles?.borderRadius === "default"
@@ -402,7 +430,7 @@ function renderImage(
         : undefined,
     width: "100%",
   };
-  const imageStyle: React.CSSProperties = {
+  const imageStyle: CSSProperties = {
     display: "block",
     width: "100%",
     height: "100%",
@@ -466,18 +494,18 @@ function makeCta(label: string): ComprehensiveCTAValue {
 const FeaturedPromoComponent: PuckComponent<
   BoutiqueShopFeaturedPromoProps
 > = (props) => {
-  const { locale, document: streamDocument } = useDocument();
-  const resolvedLocale = locale ?? "en";
+  const streamDocument = useDocument<StreamDocument>();
+  const resolvedLocale = streamDocument.locale ?? "en";
   const sectionSurfaceStyle = getSurfaceColorStyle(
     props.section.backgroundColor,
     streamDocument,
   );
   const sectionForeground = sectionSurfaceStyle?.color ?? "#000000";
 
-  const resolvedBody = resolveComponentData(
+  const resolvedBody = resolveYextEntityField(
+    streamDocument,
     props.body.text,
     resolvedLocale,
-    streamDocument,
   );
   const promoImage = renderImage(
     props.promoImage,
@@ -549,8 +577,19 @@ const FeaturedPromoComponent: PuckComponent<
                   fieldId={props.body.text.field}
                   constantValueEnabled={props.body.text.constantValueEnabled}
                 >
-                  <div style={resolveExplicitColor(props.body.fontColor)}>
-                    {renderRichText(resolvedBody)}
+                  <div className="boutique-featured-promo__copy">
+                    {renderRichText(
+                      resolvedBody &&
+                        typeof resolvedBody === "object" &&
+                        ("hasLocalizedValue" in resolvedBody ||
+                          "defaultValue" in resolvedBody)
+                        ? resolvedBody[resolvedLocale] ?? resolvedBody.defaultValue
+                        : resolvedBody,
+                      {
+                        ...props.body.styles,
+                        color: getThemeColorCssValue(props.body.fontColor),
+                      },
+                    )}
                   </div>
                 </EntityField>
                 <div className="boutique-featured-promo__cta">
@@ -648,6 +687,10 @@ const promoFields = {
           types: ["type.rich_text_v2"],
         },
       },
+      styles: {
+        label: msg("fields.textStyles", "Text Styles"),
+        type: "styledText",
+      },
       fontColor: {
         label: msg("fields.fontColor", "Font Color"),
         type: "basicSelector",
@@ -713,6 +756,13 @@ export const BoutiqueShopFeaturedPromo: YextComponentConfig<BoutiqueShopFeatured
         },
       },
       body: {
+        styles: {
+          fontFamily: "default",
+          fontSize: "default",
+          fontWeight: "default",
+          fontStyle: "default",
+          textTransform: "default",
+        },
         text: {
           field: "",
           constantValue: {
