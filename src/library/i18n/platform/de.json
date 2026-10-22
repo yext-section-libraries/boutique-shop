@@ -117,6 +117,7 @@
     "longitude": "Längengrad",
     "mainPhone": "Haupttelefonnummer",
     "mainPhoneLabel": "Beschriftung der Haupttelefonnummer",
+    "mapStartingZoom": "Anfängliche Zoomstufe der Karte",
     "mapStyle": "Kartenstil",
     "name": "Name",
     "navigation": "Navigation",

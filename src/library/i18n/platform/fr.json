@@ -117,6 +117,7 @@
     "longitude": "Longitude",
     "mainPhone": "Téléphone principal",
     "mainPhoneLabel": "Libellé du téléphone principal",
+    "mapStartingZoom": "Niveau de zoom initial de la carte",
     "mapStyle": "Style cartographier",
     "name": "Nom",
     "navigation": "Navigation",

@@ -117,6 +117,7 @@
     "longitude": "經度",
     "mainPhone": "主要電話",
     "mainPhoneLabel": "主要電話標籤",
+    "mapStartingZoom": "地圖初始縮放層級",
     "mapStyle": "地圖樣式",
     "name": "姓名",
     "navigation": "導覽",

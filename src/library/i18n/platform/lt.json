@@ -117,6 +117,7 @@
     "longitude": "Ilguma",
     "mainPhone": "Pagrindinis telefonas",
     "mainPhoneLabel": "Pagrindinio telefono etiketė",
+    "mapStartingZoom": "Pradinis žemėlapio mastelio lygis",
     "mapStyle": "Žemėlapio stilius",
     "name": "Vardas",
     "navigation": "Naršymas",

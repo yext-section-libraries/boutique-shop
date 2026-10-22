@@ -117,6 +117,7 @@
     "longitude": "Boylam",
     "mainPhone": "Ana Telefon",
     "mainPhoneLabel": "Ana Telefon Etiketi",
+    "mapStartingZoom": "Haritanın başlangıç yakınlaştırma düzeyi",
     "mapStyle": "Harita stili",
     "name": "İsim",
     "navigation": "Gezinme",

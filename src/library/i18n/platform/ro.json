@@ -117,6 +117,7 @@
     "longitude": "Longitudine",
     "mainPhone": "Telefon principal",
     "mainPhoneLabel": "Etichetă telefon principal",
+    "mapStartingZoom": "Nivelul inițial de zoom al hărții",
     "mapStyle": "Stilul hărții",
     "name": "Nume",
     "navigation": "Navigare",

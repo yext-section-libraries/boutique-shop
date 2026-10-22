@@ -117,6 +117,7 @@
     "longitude": "Hosszúság",
     "mainPhone": "Elsődleges telefonszám",
     "mainPhoneLabel": "Elsődleges telefonszám címkéje",
+    "mapStartingZoom": "A térkép kezdeti nagyítási szintje",
     "mapStyle": "Térképstílus",
     "name": "Név",
     "navigation": "Navigáció",

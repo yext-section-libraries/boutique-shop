@@ -117,6 +117,7 @@
     "longitude": "Garums",
     "mainPhone": "Galvenais tālrunis",
     "mainPhoneLabel": "Galvenā tālruņa etiķete",
+    "mapStartingZoom": "Kartes sākotnējais tālummaiņas līmenis",
     "mapStyle": "Kartes stils",
     "name": "Vārds",
     "navigation": "Navigācija",
