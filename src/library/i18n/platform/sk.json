@@ -117,6 +117,7 @@
     "longitude": "Dĺžka",
     "mainPhone": "Hlavný telefón",
     "mainPhoneLabel": "Označenie hlavného telefónu",
+    "mapStartingZoom": "Počiatočné priblíženie mapy",
     "mapStyle": "Mapový štýl",
     "name": "Meno",
     "navigation": "Navigácia",

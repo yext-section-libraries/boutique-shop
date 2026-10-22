@@ -117,6 +117,7 @@
     "longitude": "Dužina",
     "mainPhone": "Glavni telefon",
     "mainPhoneLabel": "Oznaka glavnog telefona",
+    "mapStartingZoom": "Početna razina zumiranja karte",
     "mapStyle": "Stil karte",
     "name": "Ime",
     "navigation": "Navigacija",

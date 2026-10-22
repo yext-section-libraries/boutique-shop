@@ -117,6 +117,7 @@
     "longitude": "Pikkuskraad",
     "mainPhone": "Põhitelefon",
     "mainPhoneLabel": "Põhitelefoni silt",
+    "mapStartingZoom": "Kaardi algne suumitase",
     "mapStyle": "Kaardistiil",
     "name": "Nimi",
     "navigation": "Navigeerimine",

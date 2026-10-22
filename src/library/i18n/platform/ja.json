@@ -117,6 +117,7 @@
     "longitude": "経度",
     "mainPhone": "メイン電話番号",
     "mainPhoneLabel": "メイン電話番号のラベル",
+    "mapStartingZoom": "地図の初期ズームレベル",
     "mapStyle": "マップスタイル",
     "name": "名前",
     "navigation": "ナビゲーション",

@@ -117,6 +117,7 @@
     "longitude": "Lengte",
     "mainPhone": "Hoofdtelefoonnummer",
     "mainPhoneLabel": "Label van hoofdtelefoonnummer",
+    "mapStartingZoom": "Initieel zoomniveau van de kaart",
     "mapStyle": "Kaartstijl",
     "name": "Naam",
     "navigation": "Navigatie",

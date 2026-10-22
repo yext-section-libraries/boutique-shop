@@ -117,6 +117,7 @@
     "longitude": "Længde",
     "mainPhone": "Primært telefonnummer",
     "mainPhoneLabel": "Etiket for primært telefonnummer",
+    "mapStartingZoom": "Kortets startzoom",
     "mapStyle": "Kortstil",
     "name": "Navn",
     "navigation": "Navigation",

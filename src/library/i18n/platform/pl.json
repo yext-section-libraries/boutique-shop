@@ -117,6 +117,7 @@
     "longitude": "Długość geograficzna",
     "mainPhone": "Telefon główny",
     "mainPhoneLabel": "Etykieta telefonu głównego",
+    "mapStartingZoom": "Początkowy poziom powiększenia mapy",
     "mapStyle": "Styl mapy",
     "name": "Nazwa",
     "navigation": "Nawigacja",
