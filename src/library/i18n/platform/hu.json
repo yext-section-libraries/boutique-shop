@@ -41,6 +41,7 @@
     "analytics": "Analitika",
     "answer": "Válasz",
     "ariaLabel": "ARIA-címke",
+    "autoSearchOnMapMove": "Automatikus keresés a térképen, mozgás",
     "backgroundColor": "Háttérszín",
     "bannerText": "Szalagszöveg",
     "body": "Test",

@@ -41,6 +41,7 @@
     "analytics": "Analisi",
     "answer": "Risposta",
     "ariaLabel": "Etichetta ARIA",
+    "autoSearchOnMapMove": "Cerca automaticamente sul movimento della mappa",
     "backgroundColor": "Colore di sfondo",
     "bannerText": "Testo banner",
     "body": "Corpo",

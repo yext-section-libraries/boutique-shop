@@ -41,6 +41,7 @@
     "analytics": "Analytika",
     "answer": "Odpoveď",
     "ariaLabel": "Označenie ARIA",
+    "autoSearchOnMapMove": "Automaticky hľadať pri pohybe mapy",
     "backgroundColor": "Farba pozadia",
     "bannerText": "Text bannera",
     "body": "Tela",
