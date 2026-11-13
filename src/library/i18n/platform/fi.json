@@ -41,6 +41,7 @@
     "analytics": "Analytiikka",
     "answer": "Vastaus",
     "ariaLabel": "ARIA-tunniste",
+    "autoSearchOnMapMove": "Hae automaattisesti kartan liikkeestä",
     "backgroundColor": "Taustaväri",
     "bannerText": "Banneriteksti",
     "body": "Vartalo",

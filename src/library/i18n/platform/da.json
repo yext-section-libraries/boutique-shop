@@ -41,6 +41,7 @@
     "analytics": "Analyser",
     "answer": "Svar",
     "ariaLabel": "ARIA-label",
+    "autoSearchOnMapMove": "Søg automatisk på kortbevægelse",
     "backgroundColor": "Baggrundsfarve",
     "bannerText": "Bannertekst",
     "body": "Legeme",

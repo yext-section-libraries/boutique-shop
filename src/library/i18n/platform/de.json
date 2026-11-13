@@ -41,6 +41,7 @@
     "analytics": "Analytics",
     "answer": "Antwort",
     "ariaLabel": "ARIA-Beschriftung",
+    "autoSearchOnMapMove": "Automatische Suche nach Kartenbewegung",
     "backgroundColor": "Hintergrundfarbe",
     "bannerText": "Bannertext",
     "body": "Inhalt",

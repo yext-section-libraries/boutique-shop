@@ -41,6 +41,7 @@
     "analytics": "Analüütika",
     "answer": "Vastus",
     "ariaLabel": "ARIA silt",
+    "autoSearchOnMapMove": "Otsige automaatselt kaardil liikumist",
     "backgroundColor": "Taustvärv",
     "bannerText": "Bänneri tekst",
     "body": "Keha",

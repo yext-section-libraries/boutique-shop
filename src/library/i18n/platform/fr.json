@@ -41,6 +41,7 @@
     "analytics": "Analytique",
     "answer": "Réponse",
     "ariaLabel": "Libellé ARIA",
+    "autoSearchOnMapMove": "Recherche automatique sur le mouvement de la carte",
     "backgroundColor": "Couleur de fond",
     "bannerText": "Texte de bannière",
     "body": "Corps",

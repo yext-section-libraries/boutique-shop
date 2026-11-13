@@ -41,6 +41,7 @@
     "analytics": "Analys",
     "answer": "Svar",
     "ariaLabel": "ARIA-etikett",
+    "autoSearchOnMapMove": "Sök automatiskt på kartrörelse",
     "backgroundColor": "Bakgrundsfärg",
     "bannerText": "Bannertext",
     "body": "Kropp",

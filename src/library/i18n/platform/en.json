@@ -41,6 +41,7 @@
     "analytics": "Analytics",
     "answer": "Answer",
     "ariaLabel": "Aria Label",
+    "autoSearchOnMapMove": "Automatically Search on Map Movement",
     "backgroundColor": "Background Color",
     "bannerText": "Banner Text",
     "body": "Body",

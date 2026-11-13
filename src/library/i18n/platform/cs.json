@@ -41,6 +41,7 @@
     "analytics": "Analytika",
     "answer": "Odpověď",
     "ariaLabel": "Popisek ARIA",
+    "autoSearchOnMapMove": "Automaticky hledat při pohybu na mapě",
     "backgroundColor": "Barva pozadí",
     "bannerText": "Text banneru",
     "body": "Tělo",
